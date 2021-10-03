@@ -162,3 +162,66 @@ header .menu ul li{
 }
 
 /*-----------crowd funding---------------*/
+.crowd-funding{
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crowd-funding .cf-card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #abe9cd;
+    background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+    padding:50px;
+    border-radius: 100px 0 0 0;
+}
+.crowd-funding .cf-card .cf-content{
+    max-width: 450px;
+}
+.crowd-funding .cf-card .cf-img img{
+    max-width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+/*-----------blog-index--------------*/
+.blog{
+    margin: 100px 0;
+}
+
+.blog .blog-card{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+}
+
+.blog .blog-card .post-img img{
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px 20px 0 0;
+}
+
+.blog .blog-card .post-expert{
+    padding: 20px;
+    text-align: center;
+}
+
+.blog .section-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+/*-----------footer-------------*/
+footer{
+    min-height: 500px;
+    background: #F2F2F2;
+}
+

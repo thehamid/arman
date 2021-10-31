@@ -187,6 +187,57 @@ header .menu ul li{
     object-fit: cover;
     margin: 0 auto;
 }
+/*-----------crowd funding2---------------*/
+.crowd-funding2{
+    margin: 50px 0;
+    align-items: center;
+}
+.cf-item{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border-radius:10px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+    padding: 10px;
+
+}
+
+.crowd-funding2 .cf-item .cf-img img{
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.crowd-funding2 .cf-item .cf-content
+{
+    padding:30px 10px;
+    text-align: center;
+
+}
+.crowd-funding2 .cf-item .cf-content .cf-content-footer
+{
+    padding:30px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.crowd-funding2 .cf-item .cf-content .cf-content-footer span{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.crowd-funding2 .cf-item .cf-content .cf-content-footer span .tit{
+    font-size: 16px;
+}
+.crowd-funding2 .cf-item .cf-content .cf-content-footer span .num{
+    font-size: 25px;
+    font-weight: 500;
+}
+.crowd-funding2 .cf-item .cf-content .cf-content-footer .line{
+    border-left: 1px solid #d4d4d4;
+}
+
 /*-----------blog-index--------------*/
 .blog{
     margin: 100px 0;
@@ -212,7 +263,7 @@ header .menu ul li{
     text-align: center;
 }
 
-.blog .section-title{
+.section-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -220,8 +271,30 @@ header .menu ul li{
 }
 
 /*-----------footer-------------*/
-footer{
-    min-height: 500px;
-    background: #F2F2F2;
+.top-footer img{
+    width: 100%;
+    height: auto;
+    margin-bottom: -25px;
 }
+
+footer{
+    background: #EAEBFF;
+
+}
+.footer-widgets{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 300px;
+}
+.widget-footer{
+    padding: 20px;
+    border: 1px solid #c0c0c0;
+}
+
+.footer-copyright{
+    text-align: center;
+}
+
+
 

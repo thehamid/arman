@@ -1,6 +1,24 @@
+/*
+Theme Name:Arman
+Theme url:http://armanhome.org
+Author:Hamid Amini
+Author url:http://thehamid.ir
+Description:Private template for Armanhome Charity
+Version:1.0
+Tags: blue, cyan, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Create:Fall 2021
+*/
+
+
+
 /*---------------------
         All-Page
 -=-----------------------*/
+:root {
+    --blue: #3e78d5;
+    --black: #1d1d1d;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -20,11 +38,11 @@ body {
 
 a {
     text-decoration: none !important;
-    color: #1d1d1d;
+    color:var(--black);
 }
 
 a:hover {
-    color: #bea86f;
+    color: var(--blue);
 }
 
 /*-----------header---------------*/
@@ -48,20 +66,89 @@ header{
 }
 
 header .header-top .logo img{
-     max-width: 100%;
-     width: 200px
+    max-width: 100%;
+    width: 220px;
+    object-fit: cover;
+    height: auto;
 }
 
-header .menu ul{
+header .main-menu ul{
     display: flex;
     justify-content: right;
     list-style-type: none;
 }
 
-header .menu ul li{
+header .main-menu ul li{
     padding: 0 10px;
 }
 
+.navi {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 20px 20px 0 20px;
+}
+
+.navi li {
+    display: inline-block;
+    position: relative;
+    padding: 0 25px;
+
+}
+.navi li a {
+    color: var(--black);
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+
+
+}
+/*.navi a::after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    width: 0;*/
+/*    height: 2px;*/
+/*    background:var(--blue);*/
+/*    transition: width .3s;*/
+/*}*/
+/*.navi a:hover::after {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.navi ul {*/
+/*    min-width: 100px;*/
+/*    margin: 0;*/
+/*    padding:5px;*/
+/*    list-style: none;*/
+/*    position: absolute;*/
+/*    top: -999em;*/
+/*    left: -999em;*/
+/*    z-index: 999;*/
+/*}*/
+/*.navi ul li{*/
+/*    padding:5px  15px;*/
+/*}*/
+/*.navi li.focus > ul, .navi li:hover > ul {*/
+/*    top: auto;*/
+/*    left: auto;*/
+/*    transition:2ms ease-in-out;*/
+/*}*/
+/*.navi li li {*/
+/*    display: block;*/
+/*}*/
+/*.navi li li.focus > ul, .navi li li:hover > ul {*/
+/*    left: 100%;*/
+/*    top: 0;*/
+
+/*}*/
+
+/*.navi ul {*/
+/*    background-color: #f7f8fa;*/
+/*}*/
+/*.navi li:hover a::after {*/
+/*    width: 100%;*/
+/*}*/
 /*-----------hero---------------*/
 
 .hero{

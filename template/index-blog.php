@@ -3,51 +3,33 @@
 
         <div class="section-title">
             <h4>مطالب و اخبار آرمان</h4>
-            <a href="#" class="btn btn-outline-secondary"> همه مطالب</a>
+            <a href="<?php echo home_url(); ?>\blog" class="btn btn-outline-secondary"> همه مطالب</a>
         </div>
 
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="post-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blu-eyes.jpg" alt="">
-                    </div>
-                    <div class="post-expert">
-                        <h3>عنوان پست</h3>
-                        <p>خلاصه مطلب پست</p>
-                    </div>
 
+            <?php query_posts(array('orderby'=>'ASC', 'post_type' => 'post',)); ?>
+            <?php while( have_posts()) : the_post();  ?>
 
-                </div>
-            </div>
 
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="blog-card">
+                <a href="<?php the_permalink(); ?>" class="blog-card">
                     <div class="post-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blu-eyes.jpg" alt="">
+                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                     </div>
                     <div class="post-expert">
-                        <h3>عنوان پست</h3>
-                        <p>خلاصه مطلب پست</p>
+                        <h3><?php the_title(); ?></h3>
+                        <p><?php the_excerpt(); ?></p>
                     </div>
 
 
-                </div>
+                </a>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="post-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blu-eyes.jpg" alt="">
-                    </div>
-                    <div class="post-expert">
-                        <h3>عنوان پست</h3>
-                        <p>خلاصه مطلب پست</p>
-                    </div>
 
 
-                </div>
-            </div>
+            <?php endwhile; ?>
+            <?php wp_reset_query(); ?>
 
         </div>
     </div>

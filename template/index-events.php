@@ -4,18 +4,18 @@
 
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="items-events">
-                    <div class="e-item">
+                    <a href="#" class="e-item">
                         <i class="fad fa-home-heart"></i>
                         <h4>خاطرات خانه</h4>
-                    </div>
-                    <div class="e-item">
+                    </a>
+                    <a href="#" class="e-item">
                         <i class="fad fa-calendar-alt"></i>
                         <h4>رویداد‌های خانه</h4>
-                    </div>
-                    <div class="e-item">
+                    </a>
+                    <a href="#" class="e-item">
                         <i class="fad fa-star"></i>
                         <h4>موفقیت‌های خانه</h4>
-                    </div>
+                    </a>
 
                 </div>
             </div>

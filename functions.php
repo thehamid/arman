@@ -25,7 +25,7 @@ function theme_styles()
     wp_enqueue_style( 'main', get_template_directory_uri() . '/style.css' );
 
     // Load all of the script that need to appear on all pages
-    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/style/js/jquery-3.4.1.min.js');
+    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/style/js/jquery-3.3.1.js');
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/style/js/bootstrap.min.js');
     wp_enqueue_script( 'owl', get_template_directory_uri() . '/style/js/owl.carousel.min.js');
     wp_enqueue_script( 'gsap', get_template_directory_uri() . '/style/js/gsap.min.js');
@@ -75,3 +75,34 @@ function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
     }
     return $atts;
 }
+
+// Add Post Type Hero
+function my_hero(){
+
+    $label = array(
+        'name'			=> 'hero',
+        'singular_name' => 'hero',
+        'menu_name'		=> 'اسلایدر',
+        'add_new'		=> 'افزودن اسلاید تازه',
+        'add_new_item'  => 'افزودن تصویر تازه',
+        'edit_item'		=> 'ویرایش',
+        'all_item'		=> 'نمایش همه',
+        'veiw_item'		=> 'نمایش',
+        'search_items'  => 'جستجو',
+        'not_found'		=> 'پستی ثبت نشده است'
+    );
+
+    $args = array(
+        'labels'		=> $label,
+        'description'   => 'پست تایپ شاخص',
+        'public'        => true,
+        'query_var'     => true,
+        'capability_type'    => 'page',
+        'menu_position' => 30,
+        'has_archive'   => true,
+        'supports'      => array('title','editor','thumbnail',),
+    );
+
+    register_post_type( 'hero', $args );
+}
+add_action('init', 'my_hero');

@@ -160,6 +160,7 @@ header .main-menu ul li{
 }
 .hero img{
     max-width: 100%;
+    height: auto;
     border-radius: 20px;
     box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
 }
@@ -182,10 +183,9 @@ header .main-menu ul li{
     box-shadow: 3px 2px 16px 2px rgba(160, 78, 220, 0.5);
     cursor: pointer;
     margin: 10px;
-    transition: all 2ms ease-in-out;
+    transition: transform 250ms ease-in-out;
 }
 .services .s-item:hover{
-    transition: all 2ms ease-in-out;
     transform: translateY(-10px);
 }
 .services .s-item img{

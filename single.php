@@ -1,13 +1,11 @@
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
-    <section class="hero">
+<div class="container">
+    <section class="single-hero">
         <div class="single-title">
             <h6><?php the_category( ' ' ); ?></h6>
             <h3><?php the_title(); ?> </h3>
-            <h5> <?php echo the_date('d,F,Y'); ?> | <?php the_author(); ?> | <span class="fab fa-clock"></span>
-                <?php echo do_shortcode('[rt_reading_time]'); ?> </h5>
-
         </div>
 
         <div class="single-img">
@@ -21,7 +19,7 @@
 
     <section class="single-content">
 
-        <div class="container">
+
 
             <div class="main-content">
                 <?php the_content(); ?>
@@ -44,7 +42,7 @@
                 </div>
             </div>
 
-        </div><!-- End Container -->
+
     </section>
 
 
@@ -78,7 +76,7 @@
 
 
     </section>
-
+</div>
 <?php endif; ?>
 
 

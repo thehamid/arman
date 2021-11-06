@@ -4,20 +4,27 @@
 </section>
 <footer>
     <div class="footer-widgets">
-        <div class="widget-footer">
-            <h3>عنوان ابزارک</h3>
-            <p>متن بزارک</p>
+        <div class="right">
+            <?php if (is_active_sidebar('footer-right')) : ?>
+                <?php dynamic_sidebar('footer-right'); ?>
+            <?php endif; ?>
         </div>
 
-        <div class="widget-footer">
-            <h3>عنوان ابزارک</h3>
-            <p>متن بزارک</p>
+
+        <div class="center">
+            <?php if (is_active_sidebar('footer-center')) : ?>
+                <?php dynamic_sidebar('footer-center'); ?>
+            <?php endif; ?>
         </div>
 
-        <div class="widget-footer">
-            <h3>عنوان ابزارک</h3>
-            <p>متن بزارک</p>
+
+        <div class="left">
+            <?php if (is_active_sidebar('footer-left')) : ?>
+                <?php dynamic_sidebar('footer-left'); ?>
+            <?php endif; ?>
         </div>
+
+
     </div>
 
     <div class="footer-copyright">
@@ -28,7 +35,6 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-
 
 
 <?php wp_footer(); ?>

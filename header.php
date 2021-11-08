@@ -60,16 +60,19 @@
                         'container'         => 'div',
                         'container_class'   => 'collapse navbar-collapse',
                         'container_id'      => 'bs-example-navbar-collapse-1',
-                        'menu_class'        => 'nav navbar-nav navi',
+                        'menu_class'        => 'nav navbar-nav',
                         'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                         'walker'            => new WP_Bootstrap_Navwalker(),
                     ) );
                     ?>
                 </div>
-            </nav>
+            </nav
 
 
-            <a href="#"><i class="fal fa-search"></i></a>
+            <form action="https://duckduckgo.com/" role="search" class="search-form">
+                <input type="submit" value="" class="search-submit">
+                <input type="search" name="q" class="search-text" placeholder="جستجو..." autocomplete="off">
+            </form>
 
         </div>
 

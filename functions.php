@@ -114,10 +114,10 @@ function my_widget_footer(){
             'name'			=> 'ابزارک پاورقی راست',
             'id'			=> 'footer-right',
             'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '<div class="panel panel-default saye"><div class="panel-body">',
-            'after_widget'  => '</div></div>',
-            'before_title'  => '<h4><i class="fa fa-line-chart icon-inline" aria-hidden="true"></i>',
-            'after_title'   => '</h4><dir class="khat"></dir>'
+            'before_widget' => '',
+            'after_widget'  => '',
+            'before_title'  => '',
+            'after_title'   => ''
         )
     );
 
@@ -125,10 +125,10 @@ function my_widget_footer(){
             'name'			=> 'ابزارک پاورقی چپ',
             'id'			=> 'footer-left',
             'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '<div class="panel panel-default saye"><div class="panel-body">',
-            'after_widget'  => '</div></div>',
-            'before_title'  => '<h4><i class="fa fa-line-chart icon-inline" aria-hidden="true"></i>',
-            'after_title'   => '</h4><dir class="khat"></dir>'
+            'before_widget' => '',
+            'after_widget'  => '',
+            'before_title'  => '',
+            'after_title'   => ''
         )
     );
 
@@ -136,10 +136,21 @@ function my_widget_footer(){
             'name'			=> 'ابزارک پاورقی وسط',
             'id'			=> 'footer-center',
             'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '<div class="panel panel-default saye"><div class="panel-body">',
-            'after_widget'  => '</div></div>',
-            'before_title'  => '<h4><i class="fa fa-line-chart icon-inline" aria-hidden="true"></i>',
-            'after_title'   => '</h4><dir class="khat"></dir>'
+            'before_widget' => '',
+            'after_widget'  => '',
+            'before_title'  => '',
+            'after_title'   => ''
+        )
+    );
+
+    register_sidebar( array(
+            'name'			=> 'ابزارک سایدبار',
+            'id'			=> 'sidebar-widget',
+            'description'	=> 'ابزارک شخصی سایت',
+            'before_widget' => '<div class="inner">',
+            'after_widget'  => '</div>',
+            'before_title'  => '',
+            'after_title'   => ''
         )
     );
 

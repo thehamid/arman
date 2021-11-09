@@ -425,7 +425,7 @@ footer{
 /*------------------ single-page --------------------*/
 .single-hero {
     position: relative;
-    margin:2% 0;
+    margin-bottom:2%;
 }
 
 .single-hero .single-img img {
@@ -490,6 +490,8 @@ footer{
     min-height: 500px;
     text-align: justify;
     padding:20px;
+    border-radius: 20px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
 
 }
 
@@ -535,80 +537,36 @@ footer{
     background: #f2f3f5;
 }
 
-.pagination {
-    width: 100%;
-    height: 200%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-
-}
-
-.pagination .next {
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: center;
-    margin-left: 100px;
-    border-radius: 10px;
-
-}
-
-.pagination .content {
-    width: 100%;
-    height: 100%;
-    padding: 50px;
-    font-family:"Estedad", serif;
-    color: #101316;
-    background-color: hsla(0, 0%, 100%, .6);
-    transition: all .25s;
-}
-
-.pagination .content:hover {
-    background-color: hsla(0, 0%, 100%, .4);
-}
-
-.pagination .previous {
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: center;
-    text-align: left;
-    margin-right: 100px;
-    border-radius: 10px;
-}
-
-
 .comments .area {
     width: 50%;
     margin: 0 auto;
 }
-
-@media (max-width: 550px) {
-    .pagination {
-        flex-wrap: wrap;
-
-    }
-    .pagination .previous,.pagination .next {
-        margin:5px;
-    }
-
-    .pagination .content {
-        font-size: 12px;
-    }
-
-    .pagination .content h3 {
-        font-size: 16px;
-    }
-
-    .comments .area {
-        width: 100%;
-        padding: 5px;
-
-    }
+.sidebar{
+    position: -webkit-sticky;
+    position: sticky;
+    top:5%;
 }
+
+.sidebar .inner{
+    margin: 10px 0;
+}
+
+.sidebar .inner ul{
+    list-style-type: none;
+    padding: 20px;
+}
+
+.sidebar img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    padding: 0;
+    border-radius: 20px;
+
+}
+
+
+
 
 /* ---------Comments Styles----------------------*/
 h3#comments {

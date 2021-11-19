@@ -8,7 +8,7 @@
 
         <div class="row">
 
-            <?php query_posts(array('orderby'=>'ASC', 'post_type' => 'post',)); ?>
+            <?php query_posts(array('orderby'=>'ASC', 'post_type' => 'post','posts_per_page' => 3,)); ?>
             <?php while( have_posts()) : the_post();  ?>
 
 

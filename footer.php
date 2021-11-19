@@ -1,6 +1,6 @@
 </main>
 <section class="top-footer">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/wave-footer.png" alt="">
+    <img src="<?php echo get_template_directory_uri(); ?>/img/wave.png">
 </section>
 <footer>
     <div class="footer-widgets">

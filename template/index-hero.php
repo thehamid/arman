@@ -12,7 +12,7 @@
 
                 <a  href="<?php echo $link; ?>">
                     <?php if(has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail(); ?>
+                        <?php the_post_thumbnail('slider'); ?>
 
                     <?php endif; ?>
 

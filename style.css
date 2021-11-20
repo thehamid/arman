@@ -66,50 +66,100 @@ header{
 }
 
 header .header-top .logo img{
-    max-width: 100%;
     width: 220px;
-    object-fit: cover;
-    height: auto;
+    height: 100px;
+    object-fit: contain;
 }
 
-header .main-menu ul{
-    display: flex;
-    justify-content: right;
-    list-style-type: none;
-}
+/*header .main-menu ul{*/
+    /*display: flex;*/
+    /*justify-content: right;*/
+    /*list-style-type: none;*/
+/*}*/
 
-header .main-menu ul li{
-    padding: 0 10px;
-}
+/*header .main-menu ul li{*/
+    /*padding: 0 10px;*/
+/*}*/
 
-.navi {
-    display: block;
+/*.navi {*/
+    /*display: block;*/
+    /*position: relative;*/
+    /*text-align: center;*/
+    /*padding: 20px 20px 0 20px;*/
+/*}*/
+
+/*.navi li {*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*padding: 0 25px;*/
+
+/*}*/
+/*.navi li a {*/
+    /*color: var(--black);*/
+    /*text-decoration: none;*/
+    /*display: block;*/
+    /*white-space: nowrap;*/
+    /*text-align: center;*/
+
+
+/*}*/
+
+/*.dropdown-menu{*/
+    /*text-align: center;*/
+/*}*/
+/********start menu*********/
+.main-menu {
+    float: right;
+}
+.main-menu > ul > li {
+    float: right;
+    list-style: none;
     position: relative;
-    text-align: center;
-    padding: 20px 20px 0 20px;
 }
-
-.navi li {
+.main-menu ul li a {
+    padding: 26px 22px;
     display: inline-block;
-    position: relative;
-    padding: 0 25px;
-
-}
-.navi li a {
-    color: var(--black);
+    font-size: 15px;
     text-decoration: none;
+    color: #454647;
+    font-weight: bold;
+}
+.main-menu ul li a i {
+    margin-right: 5px;
+}
+.main-menu ul li ul {
+    position: absolute;
+    width: 250px;
+    background: #fff;
+    top: 115px;
+    right: 0;
+    box-shadow: 0px 1px 6px #e6e6e6;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+    z-index: 999;
+}
+.main-menu ul li ul li {
+    list-style: none;
+}
+.main-menu ul li ul li a {
+    padding: 9px 15px;
     display: block;
-    white-space: nowrap;
-    text-align: center;
-
+    font-weight: normal;
 
 }
-
-.dropdown-menu{
-
-    text-align: center;
-
+.main-menu ul li ul li a:hover {
+    background: #5caf21;
+    color: #fff;
 }
+.main-menu > ul > li:hover ul {
+    opacity: 1;
+    visibility: visible;
+    top: 83px;
+}
+
+
+
 /* ============ desktop view ============ */
 @media all and (min-width: 992px) {
     .navbar .nav-item .dropdown-menu{ display: none; }
@@ -187,7 +237,6 @@ input.search-text::-webkit-search-cancel-button {
 }
 .hero img{
     max-width: 100%;
-    height: auto;
     border-radius: 20px;
     box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
 }
@@ -361,7 +410,7 @@ input.search-text::-webkit-search-cancel-button {
     margin: 100px 0;
 }
 
-.blog .blog-card{
+.blog-card{
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -369,18 +418,23 @@ input.search-text::-webkit-search-cancel-button {
     box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
 }
 
-.blog .blog-card .post-img img{
-    max-width: 100%;
+.blog-card .post-img img{
+    width: 100%;
+    height: 300px;
     object-fit: cover;
-    display: block;
+    object-position: bottom;
     border-radius: 20px 20px 0 0;
 }
 
-.blog .blog-card .post-expert{
+.blog-card .post-expert{
     padding: 20px;
     text-align: center;
+    max-height: 250px;
+    min-height: 250px;
 }
-
+.blog-card .post-expert p{
+    text-align: justify;
+}
 .section-title{
     display: flex;
     justify-content: space-between;
@@ -388,15 +442,17 @@ input.search-text::-webkit-search-cancel-button {
     padding: 50px;
 }
 
+
+
 /*-----------footer-------------*/
 .top-footer img{
     width: 100%;
     height: auto;
-    margin-bottom: -25px;
+    margin-bottom: -10px;
 }
 
 footer{
-    background: #EAEBFF;
+    background: #d8ffff;
 
 }
 .footer-widgets{
@@ -780,4 +836,42 @@ textarea#comment {
     width: 100%;
     text-align: justify;
     margin: 0 auto;
+}
+
+.breadcrumb{
+    padding:20px;
+    border-radius: 20px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+}
+/* ---------Blog-page----------------------*/
+.blog__page {
+    min-height: 600px;
+    text-align: right;
+    margin: 50px auto;
+}
+
+.pagination {
+    border-top: none !important;
+    padding-top: 40px;
+}
+
+.pagination span {
+    color: #ffffff;
+    background: #28313B;
+    padding: 10px 20px;
+    border: 1px solid #e2e3e5;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.pagination a {
+    padding: 10px 20px;
+    border: 1px solid #e2e3e5;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.pagination a:hover {
+    color: #ffffff;
+    background: #c1c1c1;
 }

@@ -36,15 +36,24 @@ function theme_styles()
 add_action('wp_enqueue_scripts', 'theme_styles');
 
 //Theme Support
-add_theme_support('post-thumbnails');
-// Set Logo Theme at Customizer
-add_theme_support( 'custom-logo', array(
-    'height'      => 100,
-    'width'       => 220,
-    'flex-height' => true,
-    'flex-width'  => true,
-    'header-text' => array( 'site-title', 'site-description' ),
-) );
+function arman_setup_theme(){
+    add_theme_support('title-tag');
+    add_theme_support('automatic-feed-links');
+    add_image_size('slider','1100','500','true');
+
+
+
+    add_theme_support('post-thumbnails');
+    // Set Logo Theme at Customizer
+    add_theme_support( 'custom-logo', array(
+        'height'      => 100,
+        'width'       => 220,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
+    ) );
+}
+add_action('after_setup_theme','arman_setup_theme');
 
 //Menu Register
 function register_my_menus() {
@@ -75,6 +84,25 @@ function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
     }
     return $atts;
 }
+
+//rahnamaye safahat
+function web_breadcrumb(){
+    if(!is_home()){
+        echo '<nav class="breadcrumb">';
+        echo '<a href="'.home_url('/').'">خانه</a><span class="divider"> / </span>';
+        if(is_category() || is_single()){
+            the_category(' <span class="divider"> / </span> ');
+            if(is_single()){
+                echo '<span class="divider"> / </span>';
+                the_title();
+            }
+        } else if(is_page()){
+            echo the_title();
+        }
+        echo '</nav>';
+    }
+}
+
 
 // Add Post Type Hero
 function my_hero(){

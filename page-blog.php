@@ -4,7 +4,8 @@
 */
 ?>
 <?php get_header(); ?>
-    <div class="blog container" role="main">
+    <div class="blog__page container" role="main">
+        <?php if(function_exists('web_breadcrumb')) web_breadcrumb(); ?>
         <div class="row">
             <?php
             $temp = $wp_query;

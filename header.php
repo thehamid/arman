@@ -38,8 +38,8 @@
 
 
             <div class="top-menu">
-                <a href="#"><i class="fal fa-user"></i></a>
-                <a href="#"><i class="fal fa-shopping-cart"></i></a>
+                <a href="<?php echo home_url(); ?>/my-account"><i class="fal fa-user"></i></a>
+                <a href="<?php echo home_url(); ?>/cart"><i class="fal fa-shopping-cart"></i></a>
                 <a href="<?php echo home_url(); ?>/donation" class="btn btn-primary"><i class="fal fa-heart"></i>کمک آرمانی</a>
             </div>
         </div>
@@ -69,9 +69,9 @@
             </nav
 
 
-            <form action="https://duckduckgo.com/" role="search" class="search-form">
+            <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="search-form">
                 <input type="submit" value="" class="search-submit">
-                <input type="search" name="q" class="search-text" placeholder="جستجو..." autocomplete="off">
+                <input type="search" name="s" id="s" class="search-text" placeholder="جستجو..." autocomplete="off">
             </form>
 
         </div>

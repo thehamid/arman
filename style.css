@@ -19,6 +19,7 @@ Create:Fall 2021
     --black: #1d1d1d;
     --gray: #f2f2f2;
     --purple: #AF2DFF;
+    --purple-dark: #8523ff;
 }
 
 * {
@@ -46,6 +47,37 @@ a {
 a:hover {
     color: var(--blue);
 }
+.btn-theme{
+    display: flex;
+    align-items: center;
+    color:#ffffff;
+    background:var(--purple);
+    border-radius: 100px;
+    padding: 5px 25px;
+    box-shadow: 3px 2px 16px 2px rgba(132, 13, 205, 0.32);
+    transition: all 0.2ms ease-in-out;
+}
+
+.btn-theme:hover{
+    color:#ffffff;
+    background:var(--purple-dark);
+    transition:all 0.2ms ease-in-out;
+}
+
+.section-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+.section-title h4::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--purple);
+    margin-top: 15px;
+}
 
 /*-----------header---------------*/
 header{
@@ -71,6 +103,19 @@ header .header-top .logo img{
     width: 220px;
     height: 100px;
     object-fit: contain;
+}
+
+header .header-top .top-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+header .header-top .top-menu .header-icon{
+    background: #e6e7e9;
+    border-radius: 1000px;
+    padding: 10px 5px;
+    margin: 0 5px;
 }
 
 header .main-menu ul{
@@ -325,6 +370,10 @@ input.search-text::-webkit-search-cancel-button {
     max-width: 550px;
 }
 
+.info .info-item .content-info a{
+    float: left;
+}
+
 .info .info-item .content-info h2::after {
     content: '';
     display: block;
@@ -441,12 +490,6 @@ input.search-text::-webkit-search-cancel-button {
 }
 .blog-card .post-expert p{
     text-align: justify;
-}
-.section-title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
 }
 
 
@@ -624,10 +667,10 @@ footer{
     background: #f2f3f5;
 }
 
-.comments .area {
-    width: 50%;
-    margin: 0 auto;
-}
+/*.comments .area {*/
+    /*width: 50%;*/
+    /*margin: 0 auto;*/
+/*}*/
 .sidebar{
     position: -webkit-sticky;
     position: sticky;
@@ -656,194 +699,343 @@ footer{
 
 
 /* ---------Comments Styles----------------------*/
-h3#comments {
-    display: none;
-}
+.comments-area,
+.comments
+{
+    display: block;
 
-.comment-form-comment label {
-    display: none;
+    margin-bottom: 5rem;
 }
+.comments-area .comments-title,
+.comments .comments-title
+{
+    font-size: 28px;
 
-.comment-notes {
-    display: none;
+    margin-bottom: 5rem;
 }
-
-.comment-form-url {
-    display: none;
-}
-
-ol.commentlist {
+.comments-area ol,
+.comments-area ul,
+.comments ol,
+.comments ul
+{
     list-style: none;
-    padding: 15px 0 0 0;
-    border-top: 1px dashed #DFDFDF;
-    text-indent: 0;
+}
+.comments-area ol ol,
+.comments-area ol ul,
+.comments-area ul ol,
+.comments-area ul ul,
+.comments ol ol,
+.comments ol ul,
+.comments ul ol,
+.comments ul ul
+{
+    list-style: none;
 }
 
-.comment-body {
-    padding: 10px;
-    border: 1px solid #f2f2f2;
-    background: rgba(249, 249, 249, 0.38);
-    box-shadow: 0 0 2px 2px rgba(220, 220, 220, 0.16);
-    margin-bottom: 10px;
-}
+.comment-list,
+.comments > ul
+{
+    margin: 0;
+    padding: 0;
 
-.vcard img {
-    width: 32px;
+    list-style: none;
 }
-
-ol.commentlist li.comment div.vcard {
-    font: normal 16px georgia, times, serif;
-    margin-bottom: 7px;
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #E5E5E5;
+.comment-list li,
+.comments > ul li
+{
+    margin-bottom: 1rem;
 }
-
-ol.commentlist li.comment div.vcard cite.fn {
-    font-style: normal;
-}
-
-ol.commentlist li.comment div.vcard span.says {
-    display: none;
-}
-
-ol.commentlist li.comment div.comment-meta {
-    font-size: 10px;
-    float: left;
-}
-
-ol.commentlist li.comment div.comment-meta a {
-    color: #5a5a5a;
+.comment-list li .comment-body,
+.comments > ul li .comment-body
+{
     position: relative;
-    top: -30px;
+
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+
+    border-bottom: 1px solid #e4e6ea;
 }
-
-ol.commentlist li.comment p {
-    font-size: 12px;
-    margin: 0 0 1em;
-    line-height: 25px;
+.comment-list .comment-meta,
+.comments > ul .comment-meta
+{
+    margin-bottom: 1rem;
 }
-
-ol.commentlist li.comment div.reply {
-    font-size: 11px;
-    text-align: left;
+.comment-list .comment-meta .comment-author img,
+.comments > ul .comment-meta .comment-author img
+{
+    float: right;
+    width: 48px;
+    height: 48px;
+    margin-left: 2rem;
+    border-radius: 6px;
 }
-
-ol.commentlist li.comment div.reply a {
-    font-weight: 400;
-    padding: 5px 10px;
-    display: inline-block;
-    color: #FFF;
-    background-color: #ababab;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    margin-left: -10px;
-    transition: all .2s;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
+.comment-list .comment-meta .comment-author a,
+.comments > ul .comment-meta .comment-author a
+{
+    font-size: 16px;
+    font-weight: bold;
 }
-
-ol.commentlist li.comment ul.children {
-    list-style: none;
-    margin: 1em 0 0;
-    text-indent: 0;
+.comment-list .comment-meta .comment-author .says,
+.comments > ul .comment-meta .comment-author .says
+{
+    display: none;
 }
-
-ol.commentlist li.comment ul {
-    font-size: 11px;
-    list-style: square;
-    margin: 0 0 1em 2em;
-}
-
-ol.commentlist li.comment ul.children li.depth-2 {
-    margin-right: 0;
-}
-
-ol.commentlist li.comment ul.children .comment-body {
-    background-color: rgba(252, 252, 252, 0.5);
-    border-right: 3px solid #bea86f;
-    border-left: 1px solid #f2f2f2 !important;
-
-}
-
-ol.commentlist li.comment ul.children li.depth-3 {
-    margin-right: 0;
-}
-
-ol.commentlist li.comment ul.children li.depth-4 {
-    margin-left: 0;
-}
-
-ol.commentlist li.comment ul.children li.depth-5 {
-    margin-left: 0;
-}
-
-#respond {
-    border-top: 1px dashed #DFDFDF;
-    padding-top: 25px;
-}
-
-#commentform {
-    margin-top: 20px;
-}
-
-#commentform p {
-    margin-bottom: 10px;
-}
-
-#commentform textarea {
-    width: 100%;
-    max-height: 200px;
-    border: 1px solid #F5F8FA;
-    border-radius: 15px;
-    box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);
-    padding: 10px;
-    margin: 10px;
-
-}
-
-#commentform textarea:focus {
-    outline: 0 !important;
-    width: 100%;
-    border: 1px solid #bea86f;
-    box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);
-    padding: 5px;
-    max-height: 200px;
-}
-
-textarea#comment {
-    max-width: 100%;
-    border: 1px solid #dcdcdc;
-}
-
-#commentform .form-submit {
-    width: 100px;
-}
-
-#commentform #submit {
-    padding: 10px 12px;
-    color: #ffffff;
-    background: #bea86f;
-    border-radius: 0;
-    cursor: pointer;
+.comment-list .comment-meta .comment-metadata a,
+.comments > ul .comment-meta .comment-metadata a
+{
     font-size: 14px;
+
+    color: #8c8c8c;
+    font-family: inherit;
+}
+.comment-list .comment-content,
+.comments > ul .comment-content
+{
+    overflow: hidden;
+}
+.comment-list .reply,
+.comments > ul .reply
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.comment-list .reply a,
+.comments > ul .reply a
+{
+    color: #287dfe;
+}
+.comment-list .reply a:hover,
+.comments > ul .reply a:hover
+{
+    color: #242424;
 }
 
-#commentform input {
-    outline: 0 !important;
-    width: 100%;
-    border: 1px solid #dcdcdc;
-    box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);
-    padding: 11px 5px;
-    font-size: 11px;
-    line-height: 11px;
-    position: relative;
-    top: -1px;
+@media (max-width: 991px)
+{
+    .comments-area .comments-title,
+    .comment-reply-title
+    {
+        font-size: 1.5rem;
+    }
+    .comments-area .comments-title
+    {
+        margin-bottom: 3rem;
+    }
 }
 
-.footer .comments ul {
-    margin-top: -6px;
-    margin-bottom: 0;
+@media (max-width: 767px)
+{
+    .comments-area .comments-title,
+    .comment-reply-title
+    {
+        font-size: 1.2rem;
+    }
+    .comments-area .comment-list .comment-meta .comment-author img
+    {
+        width: 50px;
+        height: auto;
+    }
+    .blog-post
+    {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
 }
+
+
+
+/*----new Commment Style*/
+
+
+/*h3#comments {*/
+    /*display: none;*/
+/*}*/
+
+/*.comment-form-comment label {*/
+    /*display: none;*/
+/*}*/
+
+/*.comment-notes {*/
+    /*display: none;*/
+/*}*/
+
+/*.comment-form-url {*/
+    /*display: none;*/
+/*}*/
+
+/*ol.commentlist {*/
+    /*list-style: none;*/
+    /*padding: 15px 0 0 0;*/
+    /*border-top: 1px dashed #DFDFDF;*/
+    /*text-indent: 0;*/
+/*}*/
+
+/*.comment-body {*/
+    /*padding: 10px;*/
+    /*border: 1px solid #f2f2f2;*/
+    /*background: rgba(249, 249, 249, 0.38);*/
+    /*box-shadow: 0 0 2px 2px rgba(220, 220, 220, 0.16);*/
+    /*margin-bottom: 10px;*/
+/*}*/
+
+/*.vcard img {*/
+    /*width: 32px;*/
+/*}*/
+
+/*ol.commentlist li.comment div.vcard {*/
+    /*font: normal 16px georgia, times, serif;*/
+    /*margin-bottom: 7px;*/
+    /*padding-bottom: 5px;*/
+    /*border-bottom: 1px dashed #E5E5E5;*/
+/*}*/
+
+/*ol.commentlist li.comment div.vcard cite.fn {*/
+    /*font-style: normal;*/
+/*}*/
+
+/*ol.commentlist li.comment div.vcard span.says {*/
+    /*display: none;*/
+/*}*/
+
+/*ol.commentlist li.comment div.comment-meta {*/
+    /*font-size: 10px;*/
+    /*float: left;*/
+/*}*/
+
+/*ol.commentlist li.comment div.comment-meta a {*/
+    /*color: #5a5a5a;*/
+    /*position: relative;*/
+    /*top: -30px;*/
+/*}*/
+
+/*ol.commentlist li.comment p {*/
+    /*font-size: 12px;*/
+    /*margin: 0 0 1em;*/
+    /*line-height: 25px;*/
+/*}*/
+
+/*ol.commentlist li.comment div.reply {*/
+    /*font-size: 11px;*/
+    /*text-align: left;*/
+/*}*/
+
+/*ol.commentlist li.comment div.reply a {*/
+    /*font-weight: 400;*/
+    /*padding: 5px 10px;*/
+    /*display: inline-block;*/
+    /*color: #FFF;*/
+    /*background-color: #ababab;*/
+    /*border-top-right-radius: 3px;*/
+    /*border-bottom-right-radius: 3px;*/
+    /*margin-left: -10px;*/
+    /*transition: all .2s;*/
+    /*-webkit-transition: all .2s;*/
+    /*-moz-transition: all .2s;*/
+/*}*/
+
+/*ol.commentlist li.comment ul.children {*/
+    /*list-style: none;*/
+    /*margin: 1em 0 0;*/
+    /*text-indent: 0;*/
+/*}*/
+
+/*ol.commentlist li.comment ul {*/
+    /*font-size: 11px;*/
+    /*list-style: square;*/
+    /*margin: 0 0 1em 2em;*/
+/*}*/
+
+/*ol.commentlist li.comment ul.children li.depth-2 {*/
+    /*margin-right: 0;*/
+/*}*/
+
+/*ol.commentlist li.comment ul.children .comment-body {*/
+    /*background-color: rgba(252, 252, 252, 0.5);*/
+    /*border-right: 3px solid #bea86f;*/
+    /*border-left: 1px solid #f2f2f2 !important;*/
+
+/*}*/
+
+/*ol.commentlist li.comment ul.children li.depth-3 {*/
+    /*margin-right: 0;*/
+/*}*/
+
+/*ol.commentlist li.comment ul.children li.depth-4 {*/
+    /*margin-left: 0;*/
+/*}*/
+
+/*ol.commentlist li.comment ul.children li.depth-5 {*/
+    /*margin-left: 0;*/
+/*}*/
+
+/*#respond {*/
+    /*border-top: 1px dashed #DFDFDF;*/
+    /*padding-top: 25px;*/
+/*}*/
+
+/*#commentform {*/
+    /*margin-top: 20px;*/
+/*}*/
+
+/*#commentform p {*/
+    /*margin-bottom: 10px;*/
+/*}*/
+
+/*#commentform textarea {*/
+    /*width: 100%;*/
+    /*max-height: 200px;*/
+    /*border: 1px solid #F5F8FA;*/
+    /*border-radius: 15px;*/
+    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+
+/*}*/
+
+/*#commentform textarea:focus {*/
+    /*outline: 0 !important;*/
+    /*width: 100%;*/
+    /*border: 1px solid #bea86f;*/
+    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
+    /*padding: 5px;*/
+    /*max-height: 200px;*/
+/*}*/
+
+/*textarea#comment {*/
+    /*max-width: 100%;*/
+    /*border: 1px solid #dcdcdc;*/
+/*}*/
+
+/*#commentform .form-submit {*/
+    /*width: 100px;*/
+/*}*/
+
+/*#commentform #submit {*/
+    /*padding: 10px 12px;*/
+    /*color: #ffffff;*/
+    /*background: #bea86f;*/
+    /*border-radius: 0;*/
+    /*cursor: pointer;*/
+    /*font-size: 14px;*/
+/*}*/
+
+/*#commentform input {*/
+    /*outline: 0 !important;*/
+    /*width: 100%;*/
+    /*border: 1px solid #dcdcdc;*/
+    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
+    /*padding: 11px 5px;*/
+    /*font-size: 11px;*/
+    /*line-height: 11px;*/
+    /*position: relative;*/
+    /*top: -1px;*/
+/*}*/
+
+/*.footer .comments ul {*/
+    /*margin-top: -6px;*/
+    /*margin-bottom: 0;*/
+/*}*/
 /* ---------Page Styles----------------------*/
 .page {
     min-height: 850px;

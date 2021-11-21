@@ -139,37 +139,17 @@ add_action('init', 'my_hero');
 //widget footer
 function my_widget_footer(){
     register_sidebar( array(
-            'name'			=> 'ابزارک پاورقی راست',
-            'id'			=> 'footer-right',
-            'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '',
-            'after_widget'  => '',
-            'before_title'  => '',
-            'after_title'   => ''
+            'name'			=> 'پاورقی قالب',
+            'id'			=> 'footer-widget',
+            'description'	=> 'ابزارک پاورقی قالب',
+            'before_widget' => '<div class="col-sm-6 col-md-3">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
         )
     );
 
-    register_sidebar( array(
-            'name'			=> 'ابزارک پاورقی چپ',
-            'id'			=> 'footer-left',
-            'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '',
-            'after_widget'  => '',
-            'before_title'  => '',
-            'after_title'   => ''
-        )
-    );
 
-    register_sidebar( array(
-            'name'			=> 'ابزارک پاورقی وسط',
-            'id'			=> 'footer-center',
-            'description'	=> 'ابزارک شخصی سایت',
-            'before_widget' => '',
-            'after_widget'  => '',
-            'before_title'  => '',
-            'after_title'   => ''
-        )
-    );
 
     register_sidebar( array(
             'name'			=> 'ابزارک سایدبار',

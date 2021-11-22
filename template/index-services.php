@@ -27,7 +27,7 @@
 
             <div class="col-sm-12 col-md-6 col-lg-3">
                 <a href="#" class="s-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/coinbox.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/coinbox2.png" alt="">
                     <h4>قلک آرمان</h4>
                 </a>
 

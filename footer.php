@@ -26,8 +26,11 @@
 </footer>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
 
+
+<script>
+    new WOW().init();
+</script>
 
 <?php wp_footer(); ?>
 </body>

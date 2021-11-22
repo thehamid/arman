@@ -9,7 +9,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-<header>
+<header class="sticky">
     <div class="container">
 
         <div class="header-top">

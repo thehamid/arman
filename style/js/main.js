@@ -24,3 +24,18 @@ $(document).ready(function(){
 });
 
 
+$(window).scroll(function(){
+    var headerBottom = $('.header-bottom');
+    var sticky = $('.sticky');
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 100){
+        sticky.addClass('fixed');
+        headerBottom.addClass('hide');
+    }
+    else {
+        sticky.removeClass('fixed');
+        headerBottom.removeClass('hide');
+    }
+
+});

@@ -35,9 +35,9 @@
 
 
             <div class="top-menu">
-                <a href="<?php echo home_url(); ?>/my-account"><i class="fal fa-user"></i></a>
-                <a href="<?php echo home_url(); ?>/cart"><i class="fal fa-shopping-cart"></i></a>
-                <a href="<?php echo home_url(); ?>/donation" class="btn btn-primary"><i class="fal fa-heart"></i>کمک آرمانی</a>
+                <a href="<?php echo home_url(); ?>/my-account" class="header-icon"><i class="fal fa-user"></i></a>
+                <a href="<?php echo home_url(); ?>/cart" class="header-icon"><i class="fal fa-shopping-cart"></i></a>
+                <a href="<?php echo home_url(); ?>/donation" class="btn btn-theme"><i class="fal fa-heart"></i>کمک آرمانی</a>
             </div>
         </div>
 

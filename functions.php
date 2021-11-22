@@ -164,3 +164,51 @@ function my_widget_footer(){
 
 }
 add_action('widgets_init', 'my_widget_footer');
+
+function calb_comment($comment, $args, $depth)
+{
+
+    ?>
+    <li class="comment ">
+        <article class="comment-body">
+            <footer class="comment-meta">
+                <div class="comment-author ">
+                    <?php echo get_avatar($comment, '128');  ?>
+                    <?php printf(__('<b class="fn">%s</b> <span class="says">گفت:</span>'), get_comment_author_link()); ?>
+                </div><!-- .comment-author -->
+
+                <div class="comment-metadata">
+                    <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
+                        <?php
+                        /* translators: 1: date, 2: time */
+                        printf(
+                            __('%1$s'),
+                            get_comment_date('l,Y,m')
+                        ); ?>
+                    </a>
+                </div><!-- .comment-metadata -->
+
+            </footer><!-- .comment-meta -->
+
+            <div class="comment-content">
+                <?php comment_text(); ?>
+            </div><!-- .comment-content -->
+
+            <div class="reply">
+                <?php
+                comment_reply_link(
+                    array_merge(
+                        $args,
+                        array(
+                            'add_below' => 'comment',
+                            'depth'     => $depth,
+                            'max_depth' => $args['max_depth']
+                        )
+                    )
+                ); ?>
+            </div>
+        </article><!-- .comment-body -->
+    </li><!-- #comment-## -->
+    <?php
+
+}

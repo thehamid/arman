@@ -4,15 +4,15 @@
 
             <div class="col-sm-12 col-md-6 col-lg-4 ">
                 <div class="items-events">
-                    <a href="#" class="e-item">
+                    <a href="<?php echo home_url(); ?>/memories" class="e-item">
                         <i class="fad fa-home-heart"></i>
                         <h4>خاطرات خانه</h4>
                     </a>
-                    <a href="#" class="e-item">
+                    <a href="<?php echo home_url(); ?>/donation" class="e-item">
                         <i class="fad fa-calendar-alt"></i>
                         <h4>رویداد‌های خانه</h4>
                     </a>
-                    <a href="#" class="e-item">
+                    <a href="<?php echo home_url(); ?>/donation" class="e-item">
                         <i class="fad fa-star"></i>
                         <h4>موفقیت‌های خانه</h4>
                     </a>

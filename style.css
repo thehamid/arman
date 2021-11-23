@@ -624,9 +624,8 @@ footer{
 
 @media (max-width: 780px) {
     .single-hero {
-        margin: 0;
+        margin:0;
         width: 100%;
-        height: 100%;
     }
 
     .single-hero .single-title h3 {
@@ -871,197 +870,6 @@ footer{
 
 
 
-/*----new Commment Style*/
-
-
-/*h3#comments {*/
-    /*display: none;*/
-/*}*/
-
-/*.comment-form-comment label {*/
-    /*display: none;*/
-/*}*/
-
-/*.comment-notes {*/
-    /*display: none;*/
-/*}*/
-
-/*.comment-form-url {*/
-    /*display: none;*/
-/*}*/
-
-/*ol.commentlist {*/
-    /*list-style: none;*/
-    /*padding: 15px 0 0 0;*/
-    /*border-top: 1px dashed #DFDFDF;*/
-    /*text-indent: 0;*/
-/*}*/
-
-/*.comment-body {*/
-    /*padding: 10px;*/
-    /*border: 1px solid #f2f2f2;*/
-    /*background: rgba(249, 249, 249, 0.38);*/
-    /*box-shadow: 0 0 2px 2px rgba(220, 220, 220, 0.16);*/
-    /*margin-bottom: 10px;*/
-/*}*/
-
-/*.vcard img {*/
-    /*width: 32px;*/
-/*}*/
-
-/*ol.commentlist li.comment div.vcard {*/
-    /*font: normal 16px georgia, times, serif;*/
-    /*margin-bottom: 7px;*/
-    /*padding-bottom: 5px;*/
-    /*border-bottom: 1px dashed #E5E5E5;*/
-/*}*/
-
-/*ol.commentlist li.comment div.vcard cite.fn {*/
-    /*font-style: normal;*/
-/*}*/
-
-/*ol.commentlist li.comment div.vcard span.says {*/
-    /*display: none;*/
-/*}*/
-
-/*ol.commentlist li.comment div.comment-meta {*/
-    /*font-size: 10px;*/
-    /*float: left;*/
-/*}*/
-
-/*ol.commentlist li.comment div.comment-meta a {*/
-    /*color: #5a5a5a;*/
-    /*position: relative;*/
-    /*top: -30px;*/
-/*}*/
-
-/*ol.commentlist li.comment p {*/
-    /*font-size: 12px;*/
-    /*margin: 0 0 1em;*/
-    /*line-height: 25px;*/
-/*}*/
-
-/*ol.commentlist li.comment div.reply {*/
-    /*font-size: 11px;*/
-    /*text-align: left;*/
-/*}*/
-
-/*ol.commentlist li.comment div.reply a {*/
-    /*font-weight: 400;*/
-    /*padding: 5px 10px;*/
-    /*display: inline-block;*/
-    /*color: #FFF;*/
-    /*background-color: #ababab;*/
-    /*border-top-right-radius: 3px;*/
-    /*border-bottom-right-radius: 3px;*/
-    /*margin-left: -10px;*/
-    /*transition: all .2s;*/
-    /*-webkit-transition: all .2s;*/
-    /*-moz-transition: all .2s;*/
-/*}*/
-
-/*ol.commentlist li.comment ul.children {*/
-    /*list-style: none;*/
-    /*margin: 1em 0 0;*/
-    /*text-indent: 0;*/
-/*}*/
-
-/*ol.commentlist li.comment ul {*/
-    /*font-size: 11px;*/
-    /*list-style: square;*/
-    /*margin: 0 0 1em 2em;*/
-/*}*/
-
-/*ol.commentlist li.comment ul.children li.depth-2 {*/
-    /*margin-right: 0;*/
-/*}*/
-
-/*ol.commentlist li.comment ul.children .comment-body {*/
-    /*background-color: rgba(252, 252, 252, 0.5);*/
-    /*border-right: 3px solid #bea86f;*/
-    /*border-left: 1px solid #f2f2f2 !important;*/
-
-/*}*/
-
-/*ol.commentlist li.comment ul.children li.depth-3 {*/
-    /*margin-right: 0;*/
-/*}*/
-
-/*ol.commentlist li.comment ul.children li.depth-4 {*/
-    /*margin-left: 0;*/
-/*}*/
-
-/*ol.commentlist li.comment ul.children li.depth-5 {*/
-    /*margin-left: 0;*/
-/*}*/
-
-/*#respond {*/
-    /*border-top: 1px dashed #DFDFDF;*/
-    /*padding-top: 25px;*/
-/*}*/
-
-/*#commentform {*/
-    /*margin-top: 20px;*/
-/*}*/
-
-/*#commentform p {*/
-    /*margin-bottom: 10px;*/
-/*}*/
-
-/*#commentform textarea {*/
-    /*width: 100%;*/
-    /*max-height: 200px;*/
-    /*border: 1px solid #F5F8FA;*/
-    /*border-radius: 15px;*/
-    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
-    /*padding: 10px;*/
-    /*margin: 10px;*/
-
-/*}*/
-
-/*#commentform textarea:focus {*/
-    /*outline: 0 !important;*/
-    /*width: 100%;*/
-    /*border: 1px solid #bea86f;*/
-    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
-    /*padding: 5px;*/
-    /*max-height: 200px;*/
-/*}*/
-
-/*textarea#comment {*/
-    /*max-width: 100%;*/
-    /*border: 1px solid #dcdcdc;*/
-/*}*/
-
-/*#commentform .form-submit {*/
-    /*width: 100px;*/
-/*}*/
-
-/*#commentform #submit {*/
-    /*padding: 10px 12px;*/
-    /*color: #ffffff;*/
-    /*background: #bea86f;*/
-    /*border-radius: 0;*/
-    /*cursor: pointer;*/
-    /*font-size: 14px;*/
-/*}*/
-
-/*#commentform input {*/
-    /*outline: 0 !important;*/
-    /*width: 100%;*/
-    /*border: 1px solid #dcdcdc;*/
-    /*box-shadow: inset 2px 2px 3px rgba(220, 220, 220, 0.13);*/
-    /*padding: 11px 5px;*/
-    /*font-size: 11px;*/
-    /*line-height: 11px;*/
-    /*position: relative;*/
-    /*top: -1px;*/
-/*}*/
-
-/*.footer .comments ul {*/
-    /*margin-top: -6px;*/
-    /*margin-bottom: 0;*/
-/*}*/
 /* ---------Page Styles----------------------*/
 .page {
     min-height: 850px;
@@ -1085,6 +893,14 @@ footer{
     width: 100%;
     text-align: justify;
     margin: 0 auto;
+}
+
+.page .page-content img{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+
 }
 
 .breadcrumb{

@@ -30,7 +30,7 @@ function theme_styles()
     wp_enqueue_script( 'popper', get_template_directory_uri() . '/style/js/popper.min.js');
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/style/js/bootstrap.min.js');
     wp_enqueue_script( 'owl', get_template_directory_uri() . '/style/js/owl.carousel.min.js');
-    //wp_enqueue_script( 'gsap', get_template_directory_uri() . '/style/js/gsap.min.js');
+    wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
     wp_enqueue_script( 'main-js', get_template_directory_uri() . '/style/js/main.js', array( 'jquery' ), '1.0', true );
 
 }

@@ -13,7 +13,7 @@
 
 
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <a href="<?php the_permalink(); ?>" class="blog-card">
+                <a href="<?php the_permalink(); ?>" class="blog-card wow fadeInRight">
                     <div class="post-img">
                         <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                     </div>

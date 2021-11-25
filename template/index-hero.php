@@ -1,4 +1,4 @@
-<section class="hero container">
+<section class="hero container wow fadeIn">
 <!--    <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/slider1.jpg" alt="">-->
     <article id="owl-demo" class="owl-carousel owl-theme">
         <?php

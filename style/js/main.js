@@ -23,7 +23,7 @@ $(document).ready(function(){
     })
 });
 
-
+/*Code for hide menu when scroll */
 $(window).scroll(function(){
     var headerBottom = $('.header-bottom');
     var sticky = $('.sticky');
@@ -36,6 +36,43 @@ $(window).scroll(function(){
     else {
         sticky.removeClass('fixed');
         headerBottom.removeClass('hide');
+    }
+
+});
+
+
+
+/*Code for WoW animation start page */
+
+var a = 0;
+$(window).scroll(function() {
+
+    var oTop = $('#counter').offset().top - window.innerHeight;
+    if (a == 0 && $(window).scrollTop() > oTop) {
+        $('.number').each(function() {
+            var $this = $(this),
+                countTo = $this.attr('data-count');
+            $({
+                countNum: $this.text()
+            }).animate({
+                    countNum: countTo
+                },
+
+                {
+
+                    duration: 5000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function() {
+                        $this.text(this.countNum);
+                        //alert('finished');
+                    }
+
+                });
+        });
+        a = 1;
     }
 
 });

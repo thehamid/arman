@@ -3,7 +3,7 @@
     <img src="<?php echo get_template_directory_uri(); ?>/img/wave.png">
 </section>
 <footer>
-    <div class="container">
+    <div class="container wow fadeIn">
         <div class="footer-widget">
             <div class="row">
 

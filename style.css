@@ -23,6 +23,7 @@ Create:Fall 2021
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -93,6 +94,12 @@ header{
 .header-top .top-menu a i{
     margin: 0 10px;
 }
+
+header .header-top .logo {
+    display: inherit;
+    align-items: center;
+}
+
 
 header .header-top .logo img{
     width: 220px;
@@ -171,57 +178,262 @@ header .header-top .top-menu .header-icon{
     }
 }
 /********start menu*********/
-/*.main-menu {*/
-/*    float: right;*/
-/*}*/
-/*.main-menu > ul > li {*/
-/*    float: right;*/
-/*    list-style: none;*/
-/*    position: relative;*/
-/*}*/
-/*.main-menu ul li a {*/
-/*    padding: 26px 22px;*/
-/*    display: inline-block;*/
-/*    font-size: 15px;*/
-/*    text-decoration: none;*/
-/*    color: #454647;*/
-/*    font-weight: bold;*/
-/*}*/
-/*.main-menu ul li a i {*/
-/*    margin-right: 5px;*/
-/*}*/
-/*.main-menu ul li ul {*/
-/*    position: absolute;*/
-/*    width: 250px;*/
-/*    background: #fff;*/
-/*    top: 115px;*/
-/*    right: 0;*/
-/*    box-shadow: 0px 1px 6px #e6e6e6;*/
-/*    opacity: 0;*/
-/*    visibility: hidden;*/
-/*    transition: all .2s ease-in-out;*/
-/*    z-index: 999;*/
-/*}*/
-/*.main-menu ul li ul li {*/
-/*    list-style: none;*/
-/*}*/
-/*.main-menu ul li ul li a {*/
-/*    padding: 9px 15px;*/
-/*    display: block;*/
-/*    font-weight: normal;*/
+.main-menu {
+    float: right;
+}
+.main-menu > ul > li {
+    float: right;
+    list-style: none;
+    position: relative;
+}
+.main-menu ul li a {
+    padding: 26px 22px;
+    display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
+    color: #454647;
+    font-weight: bold;
+}
+.main-menu ul li a i {
+    margin-right: 5px;
+}
+.main-menu ul li ul {
+    position: absolute;
+    width: 250px;
+    background: #fff;
+    top: 115px;
+    right: 0;
+    box-shadow: 0px 1px 6px #e6e6e6;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+    z-index: 999;
+}
+.main-menu ul li ul li {
+    list-style: none;
+}
+.main-menu ul li ul li a {
+    padding: 9px 15px;
+    display: block;
+    font-weight: normal;
 
-/*}*/
-/*.main-menu ul li ul li a:hover {*/
-/*    background: #5caf21;*/
-/*    color: #fff;*/
-/*}*/
-/*.main-menu > ul > li:hover ul {*/
-/*    opacity: 1;*/
-/*    visibility: visible;*/
-/*    top: 83px;*/
-/*}*/
+}
+.main-menu ul li ul li a:hover {
+    background: #5caf21;
+    color: #fff;
+}
+.main-menu > ul > li:hover ul {
+    opacity: 1;
+    visibility: visible;
+    top: 83px;
+}
+
+#hamberger {
+    float: right;
+    cursor: pointer;
+    display: none;
+}
+#hamberger i {
+    font-size: 26px;
+    padding: 20px;
+}
+
+#close {
+    cursor: pointer;
+    text-align: left;
+}
+#close i {
+    font-size: 26px;
+    padding: 20px;
+    color: #fff0f0;
+}
+
+.navigation {
+    background: #1365b4;
+    width: 300px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 999;
+    padding: 60px 20px 20px;
+    transform: translateX(300px);
+    transition: all 800ms cubic-bezier(.8, 0, .33, 1);
+    border-radius: 0% 0% 100% 50%;
+}
+.navigation ul{
+
+}
+.navigation ul li {
+    position: relative;
+    margin: 15px 0;
+    display: block;
+}
+.navigation ul li i {
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+.navigation ul li ul {
+    background: #144e89;
+    padding: 3px 0;
+    margin-top: 10px;
+    display: none;
+}
+.navigation ul li ul li {
+    margin: 6px;
+}
+.navigation ul li ul li a {
+    color: #ddd;
+    padding: 0 12px;
+    display: block;
+    font-size: 14px;
+}
+
+.nav-open {
+    transform: translateX(0px);
+    border-radius: 0% 0% 0% 0%;
+
+}
+/*------------------------*/
+
+.header-top .right{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+nav .navSlide {
+    overflow: hidden;
+    position: absolute;
+    transform: translateX(300px);
+    height: 100%;
+    width: 400px;
+    transition: all 800ms cubic-bezier(.8, 0, .33, 1);
+    border-radius: 0% 0% 100% 50%;
+}
+
+nav .navSlide.nav-open {
+    transform: translateX(0px);
+    border-radius: 0% 0% 0% 0%;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.menu-btn {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    padding: 0;
+    width: 30px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-btn .line {
+    padding: 0;
+    width: 30px;
+    background: #c25fd4;
+    height: 2px;
+    margin: 5px 0;
+    transition: all 700ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.menu-btn .line.line--1 {
+    width: 30px;
+    transform: rotate(0) translateY(0);
+}
+
+.menu-btn .line.line--1.line-cross {
+    width: 30px;
+    transform: rotate(45deg) translateY(10px);
+    background: rgba(0,0,0,0.6);
+}
+
+.menu-btn .line.line--2 {
+    width: 28px;
+    transform: translateX(0);
+}
+
+.menu-btn .line.line--2.line-fade-out {
+    width: 28px;
+    transform: translate(30px);
+    opacity: 0;
+}
+
+.menu-btn .line.line--3 {
+    width: 20px;
+    transform: rotate(0) translateY(0);
+}
+
+.menu-btn .line.line--3.line-cross {
+    width: 30px;
+    transform: rotate(-45deg) translateY(-10px);
+    background: rgba(0,0,0,0.6);
+}
+nav .navSlide ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 900ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .navSlide ul.fade-in {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+nav .navSlide ul li {
+    margin: 20px 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgba(0,0,0,0.9);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    transition: all 300ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .navSlide ul li:hover {
+    color: rgba(0, 0, 0, .5);
+}
 
 
+
+
+
+@media screen and (max-width:992px) {
+    .header-bottom{
+        display: none;
+    }
+
+    #hamberger {
+        display: block;
+    }
+    .navigation .sign {
+        display: block;
+        float: right;
+        width: 100%;
+    }
+    .navigation .sign a{
+        text-align: center;
+        width: 100%;
+    }
+
+}
 
 /* ============ desktop view ============ */
 @media all and (min-width: 992px) {

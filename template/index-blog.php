@@ -15,7 +15,13 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <a href="<?php the_permalink(); ?>" class="blog-card wow fadeInRight">
                     <div class="post-img">
-                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                        <?php if(has_post_thumbnail()) : ?>
+                            <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                        <?php else : ?>
+                            <img src="https://via.placeholder.com/300">
+                        <?php endif; ?>
+
+
                     </div>
                     <div class="post-expert">
                         <h3><?php the_title(); ?></h3>

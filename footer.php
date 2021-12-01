@@ -18,7 +18,7 @@
 
 
         <div class="footer-copyright">
-            ARMANHOME.ORG 2021 &copy;کلیه حقوق متعلق به خانه آرمان است
+            ARMANHOME.ORG  &copy;تمامی حقوق برای خانه آرمان محفوظ است
         </div>
 
 

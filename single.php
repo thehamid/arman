@@ -11,8 +11,10 @@
                     </div>
 
                     <div class="single-img">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <img src="<?php the_post_thumbnail_url(); ?>">
+                        <?php if(has_post_thumbnail()) : ?>
+                            <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                        <?php else : ?>
+                            <img src="https://via.placeholder.com/600">
                         <?php endif; ?>
 
                     </div>

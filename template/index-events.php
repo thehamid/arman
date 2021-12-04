@@ -8,11 +8,11 @@
                         <i class="fad fa-home-heart"></i>
                         <h4>خاطرات خانه</h4>
                     </a>
-                    <a href="<?php echo home_url(); ?>/donation" class="e-item wow fadeInLeft">
+                    <a href="<?php echo home_url(); ?>/events" class="e-item wow fadeInLeft">
                         <i class="fad fa-calendar-alt"></i>
                         <h4>رویداد‌های خانه</h4>
                     </a>
-                    <a href="<?php echo home_url(); ?>/donation" class="e-item wow fadeInRight">
+                    <a href="<?php echo home_url(); ?>/successes" class="e-item wow fadeInRight">
                         <i class="fad fa-star"></i>
                         <h4>موفقیت‌های خانه</h4>
                     </a>

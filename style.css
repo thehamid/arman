@@ -194,6 +194,9 @@ header .header-top .top-menu .header-icon{
     list-style: none;
     position: relative;
 }
+
+
+
 .main-menu ul li a {
     padding: 26px 22px;
     display: inline-block;
@@ -202,6 +205,11 @@ header .header-top .top-menu .header-icon{
     color: #454647;
     font-weight: bold;
 }
+
+.main-menu > ul > li a:hover {
+    color:var(--purple);
+}
+
 .main-menu ul li a i {
     margin-right: 5px;
 }
@@ -659,14 +667,12 @@ footer{
     background: var(--gray);
 
 }
-.footer-widget{
+footer .footer-widget{
     padding: 5% 2%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-flow:row wrap;
 }
-footer .f-box {
+.footer-widget .f-box {
     float: right;
     width: 33%;
 }
@@ -675,7 +681,6 @@ footer .f-box {
 .footer-widget img{
     max-width: 100%;
     object-fit: contain;
-    width:100% ;
     height: auto;
 }
 
@@ -720,12 +725,13 @@ footer .f-box {
 }
 
 
-@media screen and (max-width:480px) {
-    .footer-widget img{
-        width:50% ;
-        height: auto;
+@media screen and (max-width:768px) {
+    footer .footer-widget{
+        flex-direction: column;
     }
-
+    .footer-widget .f-box{
+        width: 100%;
+    }
 }
 
 /*------------------ single-page --------------------*/

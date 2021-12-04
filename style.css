@@ -666,7 +666,13 @@ footer{
     max-width: 100%;
     object-fit: contain;
     width:100% ;
+    height: auto;
 }
+
+.footer-widget .row div{
+    margin: 10px;
+}
+
 
 .footer-widget ul {
     list-style: none;
@@ -704,6 +710,15 @@ footer{
     color: #fff0f0;
     padding: 5px 10px;
     border-radius: 10px 10px 0 0;
+}
+
+
+@media screen and (max-width:480px) {
+    .footer-widget img{
+        width:50% ;
+        height: auto;
+    }
+
 }
 
 /*------------------ single-page --------------------*/

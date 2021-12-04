@@ -661,7 +661,17 @@ footer{
 }
 .footer-widget{
     padding: 5% 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow:row wrap;
 }
+footer .f-box {
+    float: right;
+    width: 33%;
+}
+
+
 .footer-widget img{
     max-width: 100%;
     object-fit: contain;
@@ -669,9 +679,6 @@ footer{
     height: auto;
 }
 
-.footer-widget .row div{
-    margin: 10px;
-}
 
 
 .footer-widget ul {
@@ -688,12 +695,12 @@ footer{
 }
 
 
-.footer-widget h2{
+.footer-widget h3{
     font-weight: 500;
     font-size: 18px;
 }
 
-.footer-widget h2::after {
+.footer-widget h3::after {
     content: '';
     display: block;
     width: 30px;

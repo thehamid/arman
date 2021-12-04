@@ -51,7 +51,7 @@
 
         <nav class="navigation">
             <div id="close">
-                <i class="fas fa-close"></i>
+                <i class="fad fa-times-square"></i>
             </div>
 
 

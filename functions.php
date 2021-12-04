@@ -121,22 +121,40 @@ add_action('init', 'my_hero');
 //widget footer
 function my_widget_footer(){
     register_sidebar( array(
-            'name'			=> 'پاورقی قالب',
-            'id'			=> 'footer-widget',
-            'description'	=> 'ابزارک پاورقی قالب',
-            'before_widget' => '<div class="col-sm-12 col-md-6 col-lg-3">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h2>',
-            'after_title'   => '</h2>'
-        )
-    );
+        'name'          => __( 'فوتر 1' ),
+        'id'            => 'arman_footer_one',
+
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'فوتر 2' ),
+        'id'            => 'arman_footer_two',
+
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'فوتر 3' ),
+        'id'            => 'arman_footer_three',
+
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
 
 
 
     register_sidebar( array(
-            'name'			=> 'ابزارک سایدبار',
+            'name'			=> 'ناحیه کناری بلاگ',
             'id'			=> 'sidebar-widget',
-            'description'	=> 'ابزارک شخصی سایت',
             'before_widget' => '<div class="inner">',
             'after_widget'  => '</div>',
             'before_title'  => '',

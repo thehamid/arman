@@ -88,16 +88,15 @@ var link = document.querySelector('nav .nav-links');
 menuBtn.addEventListener('click', () => {
     nav.classList.toggle('nav-open');
 
-    lineOne.classList.toggle('line-cross');
-    lineTwo.classList.toggle('line-fade-out');
-    lineThree.classList.toggle('line-cross');
-    link.classList.toggle('fade-in');
+
 })
 
 closeBtn.addEventListener('click', () => {
     nav.classList.toggle('nav-open');
 
-})
+});
+
+
 
 $(function() {
     $('.navigation > ul > li').click(function(e) {

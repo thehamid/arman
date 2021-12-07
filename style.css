@@ -856,14 +856,11 @@ footer .footer-widget{
     background: #f2f3f5;
 }
 
-/*.comments .area {*/
-    /*width: 50%;*/
-    /*margin: 0 auto;*/
-/*}*/
+
 .sidebar{
     position: -webkit-sticky;
     position: sticky;
-    top:5%;
+    top:7%;
 }
 
 .sidebar .inner{
@@ -884,7 +881,9 @@ footer .footer-widget{
 
 }
 
-
+.wp-block-image:not(.is-style-rounded) img {
+    border-radius: 10px;
+}
 
 
 /* ---------Comments Styles----------------------*/
@@ -1106,4 +1105,44 @@ footer .footer-widget{
 .pagination a:hover {
     color: #ffffff;
     background: #c1c1c1;
+}
+/* ---------page-404----------------------*/
+.page-404{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.page-404 img{
+   width: 220px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.page-404 a{
+    width: 150px;
+    text-align: center;
+    margin:20px auto;
+    display: block;
+
+}
+
+/* ---------page-archive----------------------*/
+.archive{
+    min-height: 500px;
+}
+
+.archive .title-section{
+    font-size: 20px;
+    font-weight: bold;
+    padding:20px;
+    border-radius: 20px;
+    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+}
+
+.archive .post-expert{
+    text-align: center!important;
 }

@@ -1,5 +1,6 @@
 <?php
 
+include "inc/projects.php";
 
 // Load the theme stylesheets
 function theme_styles()

@@ -1,17 +1,3 @@
-<section class="crowd-funding">
-    <div class="cf-card">
-        <div class="cf-content">
-            <h2>کمک به تامین نیاز‌های خانه</h2>
-            <p>شما میتوانید فهرستی از نیازهای خانه را در اینجا دیده و اقدام به تامین و یا پرداخت هزینه آنها نمایید.</p>
-
-            <a href="#" class="btn btn-secondary"> فهرست نیازها</a>
-        </div>
-        <div class="cf-img">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/twin_kids.png" alt="">
-        </div>
-    </div>
-
-</section>
 
 <section class="crowd-funding2">
     <div class="container">
@@ -23,35 +9,67 @@
 
 
         <div class="row">
+            <?php
+
+            $args = array('post_type' => 'projects','posts_per_page' => 3,);
+            $posts = get_posts($args);
+            foreach ($posts as $post) : setup_postdata($post); ?>
+
+
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="cf-item">
                     <div class="cf-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/kid-schoolbus.webp" alt="">
+                        <?php if(has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail(); ?>
+
+                        <?php endif; ?>
                     </div>
 
 
                     <div class="cf-content">
-                        <h3>خرید نوشت افزار</h3>
-                        <p>جمع آوری هزینه‌ها برای آموزش کودکان</p>
+                        <h3><?php the_title(); ?></h3>
+                        <p><?php the_excerpt(); ?></p>
+                        <?php
+                        $start = get_post_meta($post->ID,'project_start',TRUE);
+                        $target = get_post_meta($post->ID,'project_target',TRUE);
+                        $remaining = get_post_meta($post->ID,'project_remaining',TRUE);
+                        $done = get_post_meta($post->ID,'project_done',TRUE);
 
+                        ?>
                         <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <?php
+                            $percent=0;
+                            $percent=(($start*100)/$target);
+
+                            ?>
+                            <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: <?php echo $percent; ?>%"
+                                 aria-valuenow="<?php echo $percent; ?>"
+                                 aria-valuemin="0" aria-valuemax="100"> <?php echo $percent; ?>%</div>
                         </div>
+
+
 
                         <div class="cf-content-footer">
                                 <span>
                                     <div class="tit">هدف</div>
-                                    <div class="num">20 میلیون</div>
+                                    <div class="num">  <?php if(isset($target) && !empty($target)) : ?>
+                                            <?php echo $target; ?>
+                                        <?php endif; ?> تومان</div>
                                 </span>
                             <div class="line"></div>
                             <span>
                                     <div class="tit">اهدایی</div>
-                                    <div class="num">10 میلیون</div>
+                                    <div class="num">  <?php if(isset($start) && !empty($start)) : ?>
+                                            <?php echo $start; ?>
+                                        <?php endif; ?> تومان</div>
                                 </span>
                             <div class="line"></div>
                             <span>
                                     <div class="tit">زمان باقیمانده</div>
-                                    <div class="num">20 روز</div>
+                                    <div class="num">  <?php if(isset($remaining) && !empty($remaining)) : ?>
+                                            <?php echo $remaining; ?>
+                                        <?php endif; ?> روز</div>
                                 </span>
                         </div>
 
@@ -59,7 +77,7 @@
                     </div>
 
 
-                    <a href="#" class="btn btn-info"><i class="fal fa-heart"></i>کمک شما</a>
+                    <a href="<?php the_permalink(); ?>" class="btn btn-info"><i class="fal fa-heart"></i>کمک شما</a>
 
 
 
@@ -67,94 +85,8 @@
 
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="cf-item">
-                    <div class="cf-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/kid-schoolbus.webp" alt="">
-                    </div>
-
-
-                    <div class="cf-content">
-                        <h3>خرید نوشت افزار</h3>
-                        <p>جمع آوری هزینه‌ها برای آموزش کودکان</p>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div class="cf-content-footer">
-                                <span>
-                                    <div class="tit">هدف</div>
-                                    <div class="num">20 میلیون</div>
-                                </span>
-                            <div class="line"></div>
-                            <span>
-                                    <div class="tit">اهدایی</div>
-                                    <div class="num">10 میلیون</div>
-                                </span>
-                            <div class="line"></div>
-                            <span>
-                                    <div class="tit">زمان باقیمانده</div>
-                                    <div class="num">20 روز</div>
-                                </span>
-                        </div>
-
-
-                    </div>
-
-
-                    <a href="#" class="btn btn-info"><i class="fal fa-heart"></i>کمک شما</a>
-
-
-
-                </div>
-
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="cf-item">
-                    <div class="cf-img">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/kid-schoolbus.webp" alt="">
-                    </div>
-
-
-                    <div class="cf-content">
-                        <h3>خرید نوشت افزار</h3>
-                        <p>جمع آوری هزینه‌ها برای آموزش کودکان</p>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div class="cf-content-footer">
-                                <span>
-                                    <div class="tit">هدف</div>
-                                    <div class="num">20 میلیون</div>
-                                </span>
-                            <div class="line"></div>
-                            <span>
-                                    <div class="tit">اهدایی</div>
-                                    <div class="num">10 میلیون</div>
-                                </span>
-                            <div class="line"></div>
-                            <span>
-                                    <div class="tit">زمان باقیمانده</div>
-                                    <div class="num">20 روز</div>
-                                </span>
-                        </div>
-
-
-                    </div>
-
-
-                    <a href="#" class="btn btn-info"><i class="fal fa-heart"></i>کمک شما</a>
-
-
-
-                </div>
-
-            </div>
-
+            <?php endforeach; ?>
+            <?php wp_reset_query(); ?>
         </div>
 
     </div>

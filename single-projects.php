@@ -9,13 +9,16 @@ if (isset($_POST['pay'])){
 //                'value' => $_POST['value'],
 //        ]);
 
+    $order_id = $_POST['project_id'];
+    $price =$_POST['value'];
+    $callback_url = home_url()."/verify";
+
     $data = [
-        'pin' => 'AD43F9951C17C475428B',
-        'amount' => $_POST['value'],
-        'callback' => 'http://localhost/verify.php',
-        'card_number' => '',
-        'mobile' => $_POST['phone'],
-        'invoice_id' =>  $_POST['project_id'],
+        'pin' => 'aqayepardakht',
+        'amount' => $price,
+        'callback' => $callback_url,
+        'invoice_id' => $order_id,
+        'description' => 'پرداخت از طریق افزونه پرداخت دلخواه'
     ];
 
     $data = json_encode($data);
@@ -24,18 +27,21 @@ if (isset($_POST['pay'])){
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Content-Length: ' . strlen($data))
     );
     $result = curl_exec($ch);
+    $err=curl_error($ch);
     curl_close($ch);
     if ($result && !is_numeric($result)) {
         header('Location: https://panel.aqayepardakht.ir/startpay/' . $result);
     } else {
         echo "خطا".$result;
         var_dump($result);
+        echo "curl_error:".$err;
     }
 
 
@@ -91,6 +97,7 @@ if (isset($_POST['pay'])){
                         $remaining = get_post_meta($post->ID,'project_remaining',TRUE);
                         $done = get_post_meta($post->ID,'project_done',TRUE);
 
+
                         ?>
                         <div class="progress">
                             <?php
@@ -133,7 +140,7 @@ if (isset($_POST['pay'])){
                     </div>
 
                     <div class="pay-form">
-                        <form method="post" class="row g-3" action="https://panel.aqayepardakht.ir/startpay/AD43F9951C17C475428B">
+                        <form method="post" class="row g-3">
                             <input type="hidden" class="form-control" name="project_id" value="<?php the_ID();?>">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">نام شما</label>

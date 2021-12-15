@@ -20,6 +20,7 @@ if (isset($_POST['pay'])){
 
     $data = json_encode($data);
     $ch = curl_init('https://panel.aqayepardakht.ir/api/create');
+    var_dump($ch);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -30,11 +31,14 @@ if (isset($_POST['pay'])){
             'Content-Length: ' . strlen($data))
     );
     $result = curl_exec($ch);
+    $err = curl_error($ch);
+    $result = json_decode($result);
     curl_close($ch);
     if ($result && !is_numeric($result)) {
         header('Location: https://panel.aqayepardakht.ir/startpay/' . $result);
     } else {
         echo "خطا".$result;
+        echo "cURL Error #:" . $err;
         var_dump($result);
     }
 
@@ -133,7 +137,7 @@ if (isset($_POST['pay'])){
                     </div>
 
                     <div class="pay-form">
-                        <form method="post" class="row g-3" action="https://panel.aqayepardakht.ir/startpay/AD43F9951C17C475428B">
+                        <form method="post" class="row g-3" >
                             <input type="hidden" class="form-control" name="project_id" value="<?php the_ID();?>">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">نام شما</label>

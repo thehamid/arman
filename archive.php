@@ -1,9 +1,15 @@
+<?php
+/*
+archive.php
+*/
+?>
+
 <?php get_header(); ?>
 
 <div class="archive container">
     <div class="row mt-4">
         <section class="col-lg-9">
-            <div class="title-section">بایگانی : <?php the_search_query(); ?></div>
+            <div class="title-section">بایگانی : <?php the_archive_title(); ?></div>
             <div class="row">
                 <?php while(have_posts()) : the_post(); ?>
 

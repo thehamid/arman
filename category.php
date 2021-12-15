@@ -3,7 +3,7 @@
 <div class="archive container">
     <div class="row mt-4">
         <section class="col-lg-9">
-            <div class="title-section"> نتایج برای دسته بندی : <?php the_search_query(); ?></div>
+            <div class="title-section"> نتایج برای دسته بندی : <?php the_category(); ?></div>
             <div class="row">
                 <?php while(have_posts()) : the_post(); ?>
 

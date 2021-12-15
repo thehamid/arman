@@ -1,6 +1,13 @@
 <?php
+/*
+Template Name: project_verify
+*/
+?>
 
-$pin = "F69B649E9707E1955D0A"; // کد پین درگاه شما
+
+<?php
+get_header();
+$pin = "aqayepardakht"; // کد پین درگاه شما
 
 $url = 'https://panel.aqayepardakht.ir/api/verify/';
 $fields = array(
@@ -18,6 +25,8 @@ curl_setopt( $ch, CURLOPT_URL, $url );
 curl_setopt( $ch, CURLOPT_POST, count( $fields ) );
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields_string );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec( $ch );
 curl_close( $ch );
 
@@ -72,3 +81,5 @@ echo '
     <script src="js/rtl.bootstrap.js"></script>
   </body>
 </html>';
+
+get_footer();

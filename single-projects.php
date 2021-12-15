@@ -1,6 +1,6 @@
 <?php
 global $wpdb;
-if (isset($_POST['pay'])){
+if (isset($_POST['pay'])) {
 //        $wpdb->insert("wp_doners_projects" ,
 //        [
 //                'project_id' => $_POST['project_id'],
@@ -9,13 +9,16 @@ if (isset($_POST['pay'])){
 //                'value' => $_POST['value'],
 //        ]);
 
+    $order_id = $_POST['project_id'];
+    $price = $_POST['value'];
+    $callback_url = home_url() . "/verify";
+
     $data = [
-        'pin' => 'AD43F9951C17C475428B',
-        'amount' => $_POST['value'],
-        'callback' => 'http://localhost/verify.php',
-        'card_number' => '',
-        'mobile' => $_POST['phone'],
-        'invoice_id' =>  $_POST['project_id'],
+        'pin' => 'aqayepardakht',
+        'amount' => $price,
+        'callback' => $callback_url,
+        'invoice_id' => $order_id,
+        'description' => 'پرداخت از طریق افزونه پرداخت دلخواه'
     ];
 
     $data = json_encode($data);
@@ -25,27 +28,22 @@ if (isset($_POST['pay'])){
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Content-Length: ' . strlen($data))
     );
     $result = curl_exec($ch);
     $err = curl_error($ch);
-    $result = json_decode($result);
     curl_close($ch);
     if ($result && !is_numeric($result)) {
         header('Location: https://panel.aqayepardakht.ir/startpay/' . $result);
     } else {
-        echo "خطا".$result;
-        echo "cURL Error #:" . $err;
+        echo "خطا" . $result;
         var_dump($result);
+        echo "curl_error:" . $err;
     }
-
-
-
-
-
 
 
 //        $start = get_post_meta($post->ID,'project_start',TRUE);
@@ -54,9 +52,7 @@ if (isset($_POST['pay'])){
 //         update_post_meta($_POST['project_id'],'project_start',$add);
 
 
-
 }
-
 
 
 ?>
@@ -73,10 +69,10 @@ if (isset($_POST['pay'])){
                     </div>
 
                     <div class="single-img">
-                        <?php if(has_post_thumbnail()) : ?>
+                        <?php if (has_post_thumbnail()) : ?>
                             <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                         <?php else : ?>
-                            <img src="https://via.placeholder.com/600">
+                            <img src="https://via.placeholder.com/600" alt="placeholder">
                         <?php endif; ?>
 
                     </div>
@@ -90,46 +86,47 @@ if (isset($_POST['pay'])){
                         <h3><?php the_title(); ?></h3>
                         <p><?php the_excerpt(); ?></p>
                         <?php
-                        $start = get_post_meta($post->ID,'project_start',TRUE);
-                        $target = get_post_meta($post->ID,'project_target',TRUE);
-                        $remaining = get_post_meta($post->ID,'project_remaining',TRUE);
-                        $done = get_post_meta($post->ID,'project_done',TRUE);
+                            global $post;
+                            $start = get_post_meta($post->ID, 'project_start', TRUE);
+                            $target = get_post_meta($post->ID, 'project_target', TRUE);
+                            $remaining = get_post_meta($post->ID, 'project_remaining', TRUE);
+                            $done = get_post_meta($post->ID, 'project_done', TRUE);
 
                         ?>
                         <div class="progress">
                             <?php
-                            $percent=0;
-                            $percent=(($start*100)/$target);
+                            $percent = 0;
+                            $percent = (($start * 100) / $target);
 
                             ?>
                             <div class="progress-bar bg-info" role="progressbar"
                                  style="width: <?php echo $percent; ?>%"
                                  aria-valuenow="<?php echo $percent; ?>"
-                                 aria-valuemin="0" aria-valuemax="100"> <?php echo $percent; ?>%</div>
+                                 aria-valuemin="0" aria-valuemax="100"> <?php echo $percent; ?>%
+                            </div>
                         </div>
-
 
 
                         <div class="cf-content-footer">
                                 <span>
-                                    <div class="tit">هدف</div>
-                                    <div class="num">  <?php if(isset($target) && !empty($target)) : ?>
+                                    <i class="tit">هدف</i>
+                                    <i class="num">  <?php if (isset($target) && !empty($target)) : ?>
                                             <?php echo $target; ?>
-                                        <?php endif; ?> تومان</div>
+                                        <?php endif; ?> تومان</i>
                                 </span>
                             <div class="line"></div>
                             <span>
-                                    <div class="tit">اهدایی</div>
-                                    <div class="num">  <?php if(isset($start) && !empty($start)) : ?>
+                                    <i class="tit">اهدایی</i>
+                                    <i class="num">  <?php if (isset($start) && !empty($start)) : ?>
                                             <?php echo $start; ?>
-                                        <?php endif; ?> تومان</div>
+                                        <?php endif; ?> تومان</i>
                                 </span>
                             <div class="line"></div>
                             <span>
-                                    <div class="tit">زمان باقیمانده</div>
-                                    <div class="num">  <?php if(isset($remaining) && !empty($remaining)) : ?>
+                                    <i class="tit">زمان باقیمانده</i>
+                                    <i class="num">  <?php if (isset($remaining) && !empty($remaining)) : ?>
                                             <?php echo $remaining; ?>
-                                        <?php endif; ?> روز</div>
+                                        <?php endif; ?> روز</i>
                                 </span>
                         </div>
 
@@ -137,27 +134,25 @@ if (isset($_POST['pay'])){
                     </div>
 
                     <div class="pay-form">
-                        <form method="post" class="row g-3" >
-                            <input type="hidden" class="form-control" name="project_id" value="<?php the_ID();?>">
+                        <form method="post" class="row g-3">
+                            <input type="hidden" class="form-control" name="project_id" value="<?php the_ID(); ?>">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">نام شما</label>
                                 <input type="text" class="form-control" name="name">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label">تلفن تماس</label>
-                                <input type="text" class="form-control"  name="phone">
+                                <input type="text" class="form-control" name="phone">
                             </div>
                             <div class="col-6">
                                 <label for="inputAddress" class="form-label">مبلغ اهدایی به تومان </label>
-                                <input type="number" class="form-control"  placeholder="" name="value">
+                                <input type="number" class="form-control" placeholder="" name="value">
                             </div>
 
                             <div class="col-6">
                                 <button type="submit" class="btn btn-primary" name="pay">پرداخت</button>
                             </div>
                         </form>
-
-
 
 
                     </div>
@@ -177,8 +172,6 @@ if (isset($_POST['pay'])){
 
 
                 </section>
-
-
 
 
             </section>

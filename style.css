@@ -49,6 +49,7 @@ a:hover {
 .btn-theme{
     display: flex;
     align-items: center;
+    justify-content: center;
     color:#ffffff;
     background:var(--purple);
     border-radius: 100px;
@@ -547,32 +548,6 @@ input.search-text::-webkit-search-cancel-button {
     object-fit: contain;
     padding: 0 10px 10px;
 }
-/*-----------crowd funding---------------*/
-.crowd-funding{
-    margin: 50px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.crowd-funding .cf-card{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #abe9cd;
-    background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
-    padding:50px;
-    border-radius: 100px 0 0 0;
-}
-.crowd-funding .cf-card .cf-content{
-    max-width: 450px;
-}
-.crowd-funding .cf-card .cf-img img{
-    max-width: 100%;
-    object-fit: cover;
-    margin: 0 auto;
-}
 /*-----------crowd funding2---------------*/
 .crowd-funding2{
     margin: 50px 0;
@@ -594,6 +569,10 @@ input.search-text::-webkit-search-cancel-button {
     display: block;
     border-radius: 10px;
 }
+.crowd-funding2 .cf-item a{
+    text-align: center;
+}
+
 
 .crowd-funding2 .cf-item .cf-content
 {
@@ -616,6 +595,12 @@ input.search-text::-webkit-search-cancel-button {
 .crowd-funding2 .cf-item .cf-content .cf-content-footer span .tit{
     font-size: 16px;
 }
+.crowd-funding2 .cf-item .cf-content .cf-content-footer span .tit i{
+    font-size: 20px;
+    color: var(--purple-dark);
+    padding: 5px;
+}
+
 .crowd-funding2 .cf-item .cf-content .cf-content-footer span .num{
     font-size: 25px;
     font-weight: 500;
@@ -802,7 +787,6 @@ footer .footer-widget{
 .single-content {
     position: relative;
     font-family:"Estedad", serif;
-    min-height: 500px;
     text-align: justify;
     padding:20px;
     border-radius: 20px;
@@ -1145,4 +1129,56 @@ footer .footer-widget{
 
 .archive .post-expert{
     text-align: center!important;
+}
+
+/* ---------single-projects----------------------*/
+
+
+.project-info .cf-content
+{
+    padding:30px 10px;
+    text-align: center;
+
+}
+
+.project-info .cf-content .progress{
+    margin: 20px 0;
+}
+.project-info .cf-content .cf-content-footer
+{
+    padding:30px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.project-info .cf-content .cf-content-footer span{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.project-info .cf-content .cf-content-footer span .tit{
+    font-size: 16px;
+}
+
+.project-info .cf-content .cf-content-footer span .tit i{
+    font-size: 30px;
+    color: var(--purple-dark);
+    padding: 5px;
+}
+.project-info .cf-content .cf-content-footer span .num{
+    font-size: 25px;
+    font-weight: 500;
+}
+.project-info .cf-content .cf-content-footer .line{
+    border-left: 1px solid #d4d4d4;
+}
+.project-pay{
+    padding: 20px;
+}
+
+.project-pay .pay-form button{
+    margin: 20px auto;
+    display: block;
+    width: 50%;
+
 }

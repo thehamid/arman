@@ -1,4 +1,17 @@
 <?php
+
+function projects_init()
+{
+    wp_enqueue_style('my_meta_css', get_template_directory_uri() . '/inc/meta/meta.css');
+    wp_enqueue_style('date_picker_css', get_template_directory_uri() . '/inc/meta/persianDatepicker-default.css');
+    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/inc/meta/jquery-3.3.1.js');
+    wp_enqueue_script('date_picker_js', get_template_directory_uri() . '/inc/meta/persianDatepicker.min.js');
+    wp_enqueue_script('my_meta_js', get_template_directory_uri() . '/inc/meta/meta.js', array( 'jquery' ), '1.0', true );
+}
+add_action('admin_init','projects_init');
+
+
+
 /**
  * Register meta box for projects post type.
  */
@@ -29,15 +42,15 @@ function project_meta_box_handler($post)
 
         <label>مبلغ شروع پروژه</label>
         <p>
-            <input type="text" name="p_start" value="<?php if(!empty($start)) echo $start; ?>">
+            <input type="number" name="p_start" value="<?php if(isset($start)) echo $start; ?>">
         </p>
         <label>مبلغ هدف پروژه</label>
         <p>
             <input type="number" name="p_target" value="<?php if(!empty($target)) echo $target; ?>">
         </p>
-        <label>زمان باقیمانده (روز)</label>
+        <label>تاریخ پایان پروژه</label>
         <p>
-            <input type="number" name="p_remaining" value="<?php if(!empty($remaining)) echo $remaining; ?>">
+            <input id="jdate"  type="text" name="p_remaining" value="<?php if(!empty($remaining)) echo $remaining; ?>">
         </p>
         <label>تکمیل شده
             <input name="p_done" type="checkbox" value="تکمیل شده" <?php if(!empty($done)) echo 'checked="checked"'; ?>"></label>

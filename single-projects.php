@@ -1,5 +1,6 @@
 <?php
 global $wpdb;
+global $verify;
 if (isset($_POST['pay'])) {
 //        $wpdb->insert("wp_doners_projects" ,
 //        [
@@ -11,7 +12,7 @@ if (isset($_POST['pay'])) {
 
     $order_id = $_POST['project_id'];
     $price = $_POST['value'];
-    $callback_url = home_url() . "/verify";
+    $callback_url = $_POST['project_link'];
 
     $data = [
         'pin' => 'aqayepardakht',
@@ -52,6 +53,10 @@ if (isset($_POST['pay'])) {
 //         update_post_meta($_POST['project_id'],'project_start',$add);
 
 
+}elseif (isset($_POST[ "transid" ])){
+
+   $verify=true;
+
 }
 
 
@@ -61,11 +66,10 @@ if (isset($_POST['pay'])) {
 <?php if (have_posts()) : the_post(); ?>
     <div class="container">
         <div class="row mt-4">
-            <section class="col-lg-9">
+            <section class="col-lg-6">
                 <section class="single-hero">
                     <div class="single-title">
-                        <h6><?php the_category(' '); ?></h6>
-                        <h3><?php the_title(); ?> </h3>
+                      <h3><?php the_title(); ?> </h3>
                     </div>
 
                     <div class="single-img">
@@ -78,79 +82,102 @@ if (isset($_POST['pay'])) {
                     </div>
 
                 </section>
+            </section>
 
-                <section class="single-content">
 
+            <section class="col-lg-6">
 
+                <aside class="project-info">
                     <div class="cf-content">
                         <h3><?php the_title(); ?></h3>
                         <p><?php the_excerpt(); ?></p>
                         <?php
-                            global $post;
-                            $start = get_post_meta($post->ID, 'project_start', TRUE);
-                            $target = get_post_meta($post->ID, 'project_target', TRUE);
-                            $remaining = get_post_meta($post->ID, 'project_remaining', TRUE);
-                            $done = get_post_meta($post->ID, 'project_done', TRUE);
+                        global $post;
+                        $start = get_post_meta($post->ID, 'project_start', TRUE);
+                        $target = get_post_meta($post->ID, 'project_target', TRUE);
+                        $remaining = get_post_meta($post->ID, 'project_remaining', TRUE);
+                        $done = get_post_meta($post->ID, 'project_done', TRUE);
 
+                        $now = time(); // or your date as well
+                        $your_date = strtotime($remaining);
+                        $datediff = $your_date - $now;
                         ?>
                         <div class="progress">
                             <?php
                             $percent = 0;
-                            $percent = (($start * 100) / $target);
+                            $percent = round(($start * 100) / $target);
 
                             ?>
-                            <div class="progress-bar bg-info" role="progressbar"
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
                                  style="width: <?php echo $percent; ?>%"
                                  aria-valuenow="<?php echo $percent; ?>"
-                                 aria-valuemin="0" aria-valuemax="100"> <?php echo $percent; ?>%
+                                 aria-valuemin="0" aria-valuemax="100"><span class="text-dark"> <?php echo $percent; ?>%</span>
                             </div>
                         </div>
 
 
                         <div class="cf-content-footer">
                                 <span>
-                                    <i class="tit">هدف</i>
-                                    <i class="num">  <?php if (isset($target) && !empty($target)) : ?>
+                                    <span class="tit"><i class="fad fa-bullseye"></i>هدف</span>
+                                    <span class="num">  <?php if (isset($target) && !empty($target)) : ?>
                                             <?php echo $target; ?>
-                                        <?php endif; ?> تومان</i>
+                                        <?php endif; ?> تومان</span>
                                 </span>
                             <div class="line"></div>
                             <span>
-                                    <i class="tit">اهدایی</i>
-                                    <i class="num">  <?php if (isset($start) && !empty($start)) : ?>
+                                    <span class="tit"><i class="fad fa-box-heart"></i>اهدایی</span>
+                                    <span class="num">  <?php if (isset($start)) : ?>
                                             <?php echo $start; ?>
-                                        <?php endif; ?> تومان</i>
+                                        <?php endif; ?> تومان</span>
                                 </span>
                             <div class="line"></div>
                             <span>
-                                    <i class="tit">زمان باقیمانده</i>
-                                    <i class="num">  <?php if (isset($remaining) && !empty($remaining)) : ?>
-                                            <?php echo $remaining; ?>
-                                        <?php endif; ?> روز</i>
+                                    <span class="tit"><i class="fad fa-alarm-clock"></i>زمان باقیمانده</span>
+                                    <span class="num"> <?php if(isset($datediff) && !empty($datediff)) : ?>
+                                            <?php echo round($datediff / (60 * 60 * 24)); ?>
+                                        <?php endif; ?> روز</span>
                                 </span>
                         </div>
 
 
                     </div>
+                </aside>
+
+            </section>
+
+
+          <section class="single-content col-lg-6">
+              <h4>توضیحات</h4>
+                <?php the_content(); ?>
+
+            </section>
+
+            <section class="project-pay col-lg-6">
+
+                <?php if($verify){ ?>
+                    <h3>OK</h3>
+
+                <?php }else{ ?>
 
                     <div class="pay-form">
                         <form method="post" class="row g-3">
                             <input type="hidden" class="form-control" name="project_id" value="<?php the_ID(); ?>">
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">نام شما</label>
+                            <input type="hidden" class="form-control" name="project_link" value="<?php the_permalink(); ?>">
+                            <div class="col-12">
+                                <label class="form-label">نام شما</label>
                                 <input type="text" class="form-control" name="name">
                             </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">تلفن تماس</label>
+                            <div class="col-12">
+                                <label  class="form-label">تلفن تماس</label>
                                 <input type="text" class="form-control" name="phone">
                             </div>
-                            <div class="col-6">
-                                <label for="inputAddress" class="form-label">مبلغ اهدایی به تومان </label>
+                            <div class="col-12">
+                                <label  class="form-label">مبلغ اهدایی به تومان </label>
                                 <input type="number" class="form-control" placeholder="" name="value">
                             </div>
 
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-primary" name="pay">پرداخت</button>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-theme" name="pay"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>
                             </div>
                         </form>
 
@@ -158,33 +185,17 @@ if (isset($_POST['pay'])) {
                     </div>
 
 
-                    <div class="footnote">
-                        <span><i class="fa fa-tags" aria-hidden="true"></i><?php the_tags(''); ?></span>
-
-                    </div>
+                <?php } ?>
 
 
-                    <div class="comments">
-                        <div class="area">
-                            <?php comments_template(); ?>
-                        </div>
-                    </div>
 
-
-                </section>
 
 
             </section>
-            <section class="col-lg-3">
 
-                <aside class="sidebar">
 
-                    <?php if (is_active_sidebar('sidebar-widget')) : ?>
-                        <?php dynamic_sidebar('sidebar-widget'); ?>
-                    <?php endif; ?>
-                </aside>
 
-            </section>
+
 
         </div>
 

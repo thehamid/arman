@@ -73,8 +73,12 @@
                                 <span>
                                     <div class="tit"><i class="fad fa-alarm-clock"></i>زمان باقیمانده</div>
                                     <div class="num">  <?php if(isset($datediff) && !empty($datediff)) : ?>
-                                            <?php echo round($datediff / (60 * 60 * 24)); ?>
-                                        <?php endif; ?> روز</div>
+                                            <?php if($datediff>0): ?>
+                                                <?php echo round($datediff / (60 * 60 * 24)) ." روز"; ?>
+                                            <?php else: ?>
+                                                <?php echo "تمام شد" ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?> </div>
                                 </span>
                             </div>
 

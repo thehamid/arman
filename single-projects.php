@@ -1,20 +1,29 @@
 <?php
 global $wpdb;
 global $verify;
+global $post;
+global $status;
 if (isset($_POST['pay'])) {
-//        $wpdb->insert("wp_doners_projects" ,
-//        [
-//                'project_id' => $_POST['project_id'],
-//                'name' => $_POST['name'],
-//                'phone' => $_POST['phone'],
-//                'value' => $_POST['value'],
-//        ]);
+
+    $wpdb->insert("wp_projects_donors" ,
+        [
+            'project_id' => $_POST['project_id'],
+            'name' => $_POST['name'],
+            'phone' => $_POST['phone'],
+            'value' => $_POST['value'],
+            'status' => 0,
+            'payment_id' =>0,
+            'date_created' =>date("Y-m-d h:i:sa")
+        ]);
+
+
 
     $order_id = $_POST['project_id'];
     $price = $_POST['value'];
     $callback_url = $_POST['project_link'];
 
     $data = [
+       // 'pin' => 'AD43F9951C17C475428B',
         'pin' => 'aqayepardakht',
         'amount' => $price,
         'callback' => $callback_url,
@@ -42,18 +51,82 @@ if (isset($_POST['pay'])) {
         header('Location: https://panel.aqayepardakht.ir/startpay/' . $result);
     } else {
         echo "خطا" . $result;
-        var_dump($result);
-        echo "curl_error:" . $err;
+
     }
 
 
-//        $start = get_post_meta($post->ID,'project_start',TRUE);
-//        $add=$start+$_POST['value'];
-//
-//         update_post_meta($_POST['project_id'],'project_start',$add);
-
 
 }elseif (isset($_POST[ "transid" ])){
+   // $pin = 'AD43F9951C17C475428B';
+    $pin = 'aqayepardakht';
+
+    $url = 'https://panel.aqayepardakht.ir/api/verify/';
+    $fields = array(
+        'amount' => urlencode( $_GET[ "amount" ] ),
+        'pin' => urlencode( $pin ),
+        'transid' => urlencode( $_POST[ "transid" ] ),
+    );
+    $fields_string = "";
+    foreach ( $fields as $key => $value ) {
+        $fields_string .= $key . '=' . $value . '&';
+    }
+    rtrim( $fields_string, '&' );
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $url );
+    curl_setopt( $ch, CURLOPT_POST, count( $fields ) );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields_string );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $result = curl_exec( $ch );
+    curl_close( $ch );
+
+    if ( $result === "1" ) {
+        $status=  '<p class="text-center" style="color:green">پرداخت شما با موفقیت انجام شد !</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p>';
+        $start = get_post_meta($post->ID,'project_start',TRUE);
+        $add=$start+$_POST['value'];
+        update_post_meta($_POST['project_id'],'project_start',$add);
+
+        $wpdb->insert("wp_projects_donors" ,
+            [
+                'project_id' => $_POST['project_id'],
+                'name' => $_POST['name'],
+                'phone' => $_POST['phone'],
+                'value' => $_POST['value'],
+                'status' => 1,
+                'payment_id' =>$_POST[ "transid" ],
+                'date_created' =>time(),
+            ]);
+
+
+    } else if ( $result === "0" ) {
+        $status= '<p class="text-center" style="color:red">متاسفیم! پرداخت شما موفقیت آمیز نبود.</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr><p class="text-center" style="color:orange">درصورت کسر شدن موجودی از حسابتان ،‌مبلغ کسر شده طی ۱۵ دقیقه الی ۷۲ ساعت کاری آینده از سمت بانک برگشت داده میشود. </p>';
+        $wpdb->insert("wp_projects_donors" ,
+            [
+                'project_id' => $_POST['project_id'],
+                'name' => $_POST['name'],
+                'phone' => $_POST['phone'],
+                'value' => $_POST['value'],
+                'status' => 0,
+                'payment_id' =>$_POST[ "transid" ],
+                'date_created' =>time(),
+            ]);
+
+    } else {
+        $status=  '<p class="text-center" style="color:red"> پرداخت انجام نشد ' . $result . '</p>';
+        $wpdb->insert("wp_projects_donors" ,
+            [
+                'project_id' => $_POST['project_id'],
+                'name' => $_POST['name'],
+                'phone' => $_POST['phone'],
+                'value' => $_POST['value'],
+                'status' => -1,
+                'payment_id' =>0,
+                'date_created' =>time(),
+            ]);
+    }
+
+
 
    $verify=true;
 
@@ -92,7 +165,6 @@ if (isset($_POST['pay'])) {
                         <h3><?php the_title(); ?></h3>
                         <p><?php the_excerpt(); ?></p>
                         <?php
-                        global $post;
                         $start = get_post_meta($post->ID, 'project_start', TRUE);
                         $target = get_post_meta($post->ID, 'project_target', TRUE);
                         $remaining = get_post_meta($post->ID, 'project_remaining', TRUE);
@@ -134,8 +206,12 @@ if (isset($_POST['pay'])) {
                             <span>
                                     <span class="tit"><i class="fad fa-alarm-clock"></i>زمان باقیمانده</span>
                                     <span class="num"> <?php if(isset($datediff) && !empty($datediff)) : ?>
-                                            <?php echo round($datediff / (60 * 60 * 24)); ?>
-                                        <?php endif; ?> روز</span>
+                                        <?php if($datediff>0): ?>
+                                            <?php echo round($datediff / (60 * 60 * 24)) ." روز"; ?>
+                                              <?php else: ?>
+                                                <?php echo "تمام شد" ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?> </span>
                                 </span>
                         </div>
 
@@ -155,7 +231,7 @@ if (isset($_POST['pay'])) {
             <section class="project-pay col-lg-6">
 
                 <?php if($verify){ ?>
-                    <h3>OK</h3>
+                    <?php echo $status; ?>
 
                 <?php }else{ ?>
 

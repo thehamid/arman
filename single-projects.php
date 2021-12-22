@@ -3,7 +3,10 @@ global $wpdb;
 global $verify;
 global $post;
 global $status;
+global $pay_id;
 if (isset($_POST['pay'])) {
+
+
 
     $wpdb->insert("wp_projects_donors" ,
         [
@@ -13,14 +16,16 @@ if (isset($_POST['pay'])) {
             'value' => $_POST['value'],
             'status' => 0,
             'payment_id' =>0,
+            'trans_id' =>0,
             'date_created' =>date("Y-m-d h:i:sa")
-        ]);
+        ] );
+    $pay_id=$wpdb->insert_id;
 
 
 
     $order_id = $_POST['project_id'];
     $price = $_POST['value'];
-    $callback_url = $_POST['project_link'];
+    $callback_url =add_query_arg(array('id' => $pay_id),  $_POST['project_link']);
 
     $data = [
        // 'pin' => 'AD43F9951C17C475428B',
@@ -57,12 +62,22 @@ if (isset($_POST['pay'])) {
 
 
 }elseif (isset($_POST[ "transid" ])){
+
+    global $wpdb;
+    $value = $wpdb->get_var( $wpdb->prepare(
+        " SELECT value FROM {$wpdb->prefix}wp_projects_donors WHERE ID = %d ",
+        $_REQUEST['id']
+    ) );
+
+
+
+
    // $pin = 'AD43F9951C17C475428B';
     $pin = 'aqayepardakht';
 
     $url = 'https://panel.aqayepardakht.ir/api/verify/';
     $fields = array(
-        'amount' => urlencode( $_GET[ "amount" ] ),
+        'amount' =>$value,
         'pin' => urlencode( $pin ),
         'transid' => urlencode( $_POST[ "transid" ] ),
     );
@@ -113,17 +128,16 @@ if (isset($_POST['pay'])) {
             ]);
 
     } else {
-        $status=  '<p class="text-center" style="color:red"> پرداخت انجام نشد ' . $result . '</p>';
-        $wpdb->insert("wp_projects_donors" ,
+        $status=  '<p class="text-center" style="color:red"> پرداخت انجام نشد ' . $result. '</p>';
+        var_dump( $_REQUEST['id']);
+        $wpdb->update("wp_projects_donors" ,
             [
-                'project_id' => $_POST['project_id'],
-                'name' => $_POST['name'],
-                'phone' => $_POST['phone'],
-                'value' => $_POST['value'],
                 'status' => -1,
-                'payment_id' =>0,
+                'trans_id' =>$_POST[ "transid" ],
                 'date_created' =>time(),
-            ]);
+            ],
+            ['id' =>$_REQUEST['id']]
+        );
     }
 
 

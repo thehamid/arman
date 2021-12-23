@@ -1,7 +1,7 @@
 <?php
 
 global $wpdb;
-$results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}doners_projects");
+$results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}projects_donors");
 
 ?>
 
@@ -27,7 +27,19 @@ $results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}doners_projects");
                     <th><?php echo $result->phone?></th>
                     <th><?php echo $result->value?></th>
                     <th><?php echo get_the_title($result->project_id); ?></th>
-                    <th><?php echo $result->status?></th>
+                    <th>
+                        <?php
+                        switch($result->status)
+                        {
+                            case '-1' : echo "خطا در پرداخت"; break;
+                            case '-2' : echo "در انتظار پرداخت"; break;
+                            case '0' : echo "خطا یا انصراف در پرداخت"; break;
+                            case '1' : echo "پرداخت موفق"; break;
+                            default : echo "خطای نامشخص!";
+                        }
+
+                        ?>
+                    </th>
                 </tr>
             <?php endforeach; ?>
             </tbody>

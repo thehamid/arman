@@ -85,11 +85,11 @@
 
                         </div>
 
-
+                            <?php if($datediff>0 && $start<$target){ ?>
                         <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-heart"></i>کمک شما</a>
-
-
-
+                            <?php }else{ ?>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-flag"></i>پروژه پایان یافت</a>
+                             <?php } ?>
                     </div>
 
                 </div>

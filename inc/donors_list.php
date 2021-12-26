@@ -27,8 +27,8 @@ class TT_Example_List_Table extends WP_List_Table {
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => 'project',     //singular name of the listed records
-            'plural'    => 'projects',    //plural name of the listed records
+            'singular'  => 'pays',     //singular name of the listed records
+            'plural'    => 'pay',    //plural name of the listed records
             'ajax'      => false        //does this table support ajax?
         ) );
 
@@ -38,9 +38,14 @@ class TT_Example_List_Table extends WP_List_Table {
 
     function column_default($item, $column_name){
         switch($column_name){
+            case 'id':
             case 'name':
+            case 'phone':
             case 'value':
+            case 'status':
                 return $item[$column_name];
+            case 'project_id':
+                return  get_the_title($item[$column_name]);
             default:
                 return print_r($item,true); //Show the whole array for troubleshooting purposes
         }
@@ -115,8 +120,11 @@ class TT_Example_List_Table extends WP_List_Table {
         $columns = array(
             'cb'        => '<input type="checkbox" />', //Render a checkbox instead of text
             'id'     => 'ردیف',
-            'name'    => 'تلفن',
-            'value'  => 'مبلغ اهدایی'
+            'name'    => 'نام',
+            'phone'    => 'تلفن',
+            'value'  => 'مبلغ اهدایی',
+            'project_id'  => 'پروژه',
+            'status'  => 'وضعیت'
         );
         return $columns;
     }
@@ -138,9 +146,7 @@ class TT_Example_List_Table extends WP_List_Table {
      **************************************************************************/
     function get_sortable_columns() {
         $sortable_columns = array(
-            'id'     => array('id',false),     //true means it's already sorted
-            'name'    => array('name',false),
-            'value'  => array('value',false)
+            'id'     => array('id',true),     //true means it's already sorted
         );
         return $sortable_columns;
     }
@@ -207,7 +213,7 @@ class TT_Example_List_Table extends WP_List_Table {
         /**
          * First, lets decide how many records per page to show
          */
-        $per_page = 5;
+        $per_page = 20;
 
 
         /**
@@ -247,7 +253,8 @@ class TT_Example_List_Table extends WP_List_Table {
          * use sort and pagination data to build a custom query instead, as you'll
          * be able to use your precisely-queried data immediately.
          */
-        $data = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}projects_donors");
+        $query = "SELECT * FROM {$wpdb->prefix}projects_donors";
+        $data = $wpdb->get_results( $query, ARRAY_A );
         //var_dump($data);
 
         /**
@@ -259,11 +266,11 @@ class TT_Example_List_Table extends WP_List_Table {
          * sorting technique would be unnecessary.
          */
         function usort_reorder($a,$b){
-//            $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'ID'; //If no sort, default to title
-//            $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'asc'; //If no order, default to asc
-//            $result = strcmp($a[$orderby], $b[$orderby]); //Determine sort order
-//            return ($order==='asc') ? $result : -$result; //Send final sort direction to usort
-            return $a; //Send final sort direction to usort
+            $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'id'; //If no sort, default to title
+            $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'asc'; //If no order, default to asc
+            $result = strcmp($a[$orderby], $b[$orderby]); //Determine sort order
+            return ($order==='asc') ? $result : -$result; //Send final sort direction to usort
+
         }
         usort($data, 'usort_reorder');
 

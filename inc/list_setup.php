@@ -26,9 +26,9 @@ class Example_List_Table extends WP_List_Table
         $sortable = $this->get_sortable_columns();
 
         $data = $this->table_data();
-        usort( $data, array( &$this, 'usort_reorder' ) );
+        //usort( $data, array( &$this, 'usort_reorder' ) );
 
-        $perPage = 20;
+        $perPage = 10;
         $currentPage = $this->get_pagenum();
         $totalItems = count($data);
 
@@ -51,12 +51,12 @@ class Example_List_Table extends WP_List_Table
     public function get_columns()
     {
         $columns = array(
-            'id'    => 'ردیف',
             'name'  => 'نام',
             'phone' => 'تلفن',
             'value' => 'مبلغ اهدایی',
             'project_id' => 'پروژه',
-            'status' => 'وضعیت'
+            'status' => 'وضعیت',
+            'date_created' => 'تاریخ',
         );
 
         return $columns;
@@ -90,7 +90,7 @@ class Example_List_Table extends WP_List_Table
     private function table_data()
     {
        global $wpdb;
-        $query = "SELECT * FROM {$wpdb->prefix}projects_donors";
+        $query = "SELECT * FROM {$wpdb->prefix}projects_donors ORDER BY id  DESC";
         $data = $wpdb->get_results( $query, ARRAY_A );
 
         return $data;
@@ -106,15 +106,38 @@ class Example_List_Table extends WP_List_Table
      */
     public function column_default( $item, $column_name )
     {
+
+        //Build row actions
+        $actions = array(
+           'delete'    => sprintf('<a href="pay_delete=%s">حذف</a>',$item['id']),
+        );
+
+
         switch($column_name){
-            case 'id':
             case 'name':
+                $delete_nonce = wp_create_nonce();
+                $title = '<strong>' . $item['name'] . '</strong>';
+                $actions = [
+                   'delete' => sprintf('<a href="?page=%s&action=%s&id=%s&_wpnonce=%s">حذف</a>', esc_attr( $_REQUEST['page'] ), 'delete', absint($item['id']), $delete_nonce)
+                ];
+                return $title. $this->row_actions( $actions );
             case 'phone':
             case 'value':
-            case 'status':
+            case 'date_created':
                 return $item[$column_name];
             case 'project_id':
                 return  get_the_title($item[$column_name]);
+            case 'status':
+                echo (" تراکنش:".$item['trans_id']."<br>");
+                switch($item[$column_name])
+                    {
+                        case '-1' : return '<p style="color: #f61818">خطا</p>';
+                        case '-2' : return '<p style="color: #636363">در انتظار پرداخت</p>';
+                        case '0' : return '<p style="color: #f67818">خطا یا انصراف</p>';
+                        case '1' : return '<p style="color: #75f107">موفق</p>';
+                        default : return '<p style="color: #f618bf">خطای نامشخص</p>';
+                    }
+
             default:
                 return print_r($item,true); //Show the whole array for troubleshooting purposes
         }
@@ -128,40 +151,22 @@ class Example_List_Table extends WP_List_Table
         return ($order==='DESC') ? $result : -$result; //Send final sort direction to usort
     }
 
+    function process_bulk_action() {
 
-
-    /**
-     * Allows you to sort the data by the variables set in the $_GET
-     *
-     * @return Mixed
-     */
-    private function sort_data( $a, $b )
-    {
-        // Set defaults
-        $orderby = 'id';
-        $order = 'dsc';
-
-        // If orderby is set, use this as the sort column
-        if(!empty($_GET['orderby']))
-        {
-            $orderby = $_GET['orderby'];
+        //Detect when a bulk action is being triggered...
+        if( 'delete'===$this->current_action() ) {
+            wp_die('Items deleted (or they would be if we had items to delete)!');
         }
 
-        // If order is set use this as the order
-        if(!empty($_GET['order']))
-        {
-            $order = $_GET['order'];
-        }
-
-
-        $result = strcmp( $a[$orderby], $b[$orderby] );
-
-        if($order === 'dsc')
-        {
-            return $result;
-        }
-
-        return -$result;
     }
+
+    function delete_article($item){
+        $pay_id = $item['id'];
+        global $wpdb;
+        $table = 'wp_projects_donors';
+        $wpdb->query("DELETE FROM $table WHERE id = %d", $pay_id);
+    }
+
+
+
 }
-?>

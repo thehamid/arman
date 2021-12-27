@@ -30,8 +30,7 @@ function register_projects_post_type() {
         'has_archive'        => true,
         'hierarchical'       => true,
         'menu_position'      => null,
-        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-        'taxonomies'    => array( 'category' ),
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt'),
         'rewrite'       => ['slug' => 'projects'],
     );
 
@@ -65,3 +64,4 @@ function pay_projects_list_page() {
 
    include 'pay_list.php';
 }
+

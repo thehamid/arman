@@ -107,7 +107,7 @@ if (isset($_POST['pay'])) {
             [
                 'status' => 1,
                 'trans_id' =>$_POST[ "transid" ],
-                'date_created' =>time(),
+                'date_created' =>date("Y-m-d h:i:sa"),
             ],
             ['id' =>$_REQUEST['entry']]
         );
@@ -119,7 +119,7 @@ if (isset($_POST['pay'])) {
             [
                 'status' => 0,
                 'trans_id' =>$_POST[ "transid" ],
-                'date_created' =>time(),
+                'date_created' =>date("Y-m-d h:i:sa"),
             ],
             ['id' =>$_REQUEST['entry']]
         );
@@ -131,7 +131,7 @@ if (isset($_POST['pay'])) {
             [
                 'status' => -1,
                 'trans_id' =>$_POST[ "transid" ],
-                'date_created' =>time(),
+                'date_created' =>date("Y-m-d h:i:sa"),
             ],
             ['id' =>$_REQUEST['entry']]
         );

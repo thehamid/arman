@@ -41,6 +41,7 @@ add_action( 'init', 'register_projects_post_type' );
 
 
 
+
 add_action('admin_menu', 'add_tutorial_cpt_submenu_example');
 
 //admin_menu callback function

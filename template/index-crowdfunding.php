@@ -4,7 +4,7 @@
 
         <div class="section-title">
             <h4>پروژه‌های آینده</h4>
-            <a href="#" class="btn btn-outline-secondary"> همه پروژه‌ها</a>
+            <a href="<?php echo home_url(); ?>\projects" class="btn btn-outline-secondary"> همه پروژه‌ها</a>
         </div>
 
 

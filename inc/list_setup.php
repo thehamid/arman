@@ -90,6 +90,18 @@ class Example_List_Table extends WP_List_Table
     private function table_data()
     {
        global $wpdb;
+
+        if(isset($_GET['action'])) {
+            $action = $_GET['action'];
+            if ($action == 'delete') {
+                $item = intval($_GET['item']);
+                if ($item > 0) {
+                    $wpdb->delete($wpdb->prefix . 'projects_donors', ['ID' => $item]);
+                }
+            }
+
+        }
+
         $query = "SELECT * FROM {$wpdb->prefix}projects_donors ORDER BY id  DESC";
         $data = $wpdb->get_results( $query, ARRAY_A );
 
@@ -109,7 +121,7 @@ class Example_List_Table extends WP_List_Table
 
         //Build row actions
         $actions = array(
-           'delete'    => sprintf('<a href="pay_delete=%s">حذف</a>',$item['id']),
+           'delete'    => sprintf('<a href="%s">حذف</a>',add_query_arg(['action'=>'delete','item'=>$item['id']])),
         );
 
 
@@ -117,9 +129,6 @@ class Example_List_Table extends WP_List_Table
             case 'name':
                 $delete_nonce = wp_create_nonce();
                 $title = '<strong>' . $item['name'] . '</strong>';
-                $actions = [
-                   'delete' => sprintf('<a href="?page=%s&action=%s&id=%s&_wpnonce=%s">حذف</a>', esc_attr( $_REQUEST['page'] ), 'delete', absint($item['id']), $delete_nonce)
-                ];
                 return $title. $this->row_actions( $actions );
             case 'phone':
             case 'value':
@@ -151,21 +160,9 @@ class Example_List_Table extends WP_List_Table
         return ($order==='DESC') ? $result : -$result; //Send final sort direction to usort
     }
 
-    function process_bulk_action() {
 
-        //Detect when a bulk action is being triggered...
-        if( 'delete'===$this->current_action() ) {
-            wp_die('Items deleted (or they would be if we had items to delete)!');
-        }
 
-    }
 
-    function delete_article($item){
-        $pay_id = $item['id'];
-        global $wpdb;
-        $table = 'wp_projects_donors';
-        $wpdb->query("DELETE FROM $table WHERE id = %d", $pay_id);
-    }
 
 
 

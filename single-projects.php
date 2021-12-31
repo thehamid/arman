@@ -5,18 +5,17 @@ global $post;
 global $status;
 global $pay_id;
 global $error;
+global $table;
 if (isset($_POST['pay'])) {
 
-
-
-    $wpdb->insert("wp_projects_donors" ,
+    $table=$wpdb->prefix . 'projects_donors';
+    $wpdb->insert($table ,
         [
             'project_id' => $_POST['project_id'],
             'name' => $_POST['name'],
             'phone' => $_POST['phone'],
             'value' => $_POST['value'],
             'status' => -2,
-            'payment_id' =>0,
             'trans_id' =>0,
             'date_created' =>date("Y-m-d h:i:sa")
         ] );
@@ -34,7 +33,7 @@ if (isset($_POST['pay'])) {
         'amount' => $price,
         'callback' => $callback_url,
         'invoice_id' => $order_id,
-        'description' => 'پرداخت از طریق افزونه پرداخت دلخواه'
+        'description' => 'پرداخت از طریق درگاه آقای پرداخت'
     ];
 
     $data = json_encode($data);
@@ -63,11 +62,23 @@ if (isset($_POST['pay'])) {
 
 }elseif (isset($_POST[ "transid" ])){
 
+    global $table;
+    global $pr_id;
     global $wpdb;
-    $value = $wpdb->get_var( $wpdb->prepare(
+    global $price;
+
+    $table=$wpdb->prefix . 'projects_donors';
+
+    $price = $wpdb->get_var( $wpdb->prepare(
         " SELECT value FROM {$wpdb->prefix}projects_donors WHERE ID ={$_REQUEST['entry']}"
 
     ) );
+
+    $pr_id = $wpdb->get_var( $wpdb->prepare(
+        " SELECT project_id FROM {$wpdb->prefix}projects_donors WHERE ID ={$_REQUEST['entry']}"
+
+    ) );
+
 
 
 
@@ -77,7 +88,7 @@ if (isset($_POST['pay'])) {
 
     $url = 'https://panel.aqayepardakht.ir/api/verify/';
     $fields = array(
-        'amount' =>$value,
+        'amount' =>$price,
         'pin' => urlencode( $pin ),
         'transid' => urlencode( $_POST[ "transid" ] ),
     );
@@ -97,13 +108,13 @@ if (isset($_POST['pay'])) {
     curl_close( $ch );
 
     if ( $result === "1" ) {
-        $status=  '<p class="text-center" style="color:green">پرداخت شما با موفقیت انجام شد !</p></br><p class="text-center">مبلغ اهدایی:' . $value . '<p>تومان</p></p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr><p class="text-center" style="color:purple">با آرزوی توفیق برای شما</p></br>
+        $status=  '<p class="text-center" style="color:green">پرداخت شما با موفقیت انجام شد !</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr></br><p class="text-center" style="color:blueviolet">مبلغ اهدایی:' . $price . '<span>تومان</span></p></br><p class="text-center" style="color:purple">با آرزوی توفیق برای شما</p></br>
 <p class="text-center" style="color:purple">امیدواریم مهر و محبت شما به فرزندان خانه آرمان مستدام باشد</p>';
         $start = get_post_meta($post->ID,'project_start',TRUE);
-        $add=$start+$_POST['value'];
-        update_post_meta($_POST['project_id'],'project_start',$add);
+        $add=$start+$price;
+        update_post_meta($pr_id,'project_start',$add);
 
-        $wpdb->update("wp_projects_donors" ,
+        $wpdb->update($table ,
             [
                 'status' => 1,
                 'trans_id' =>$_POST[ "transid" ],
@@ -114,8 +125,8 @@ if (isset($_POST['pay'])) {
 
 
     } else if ( $result === "0" ) {
-        $status= '<p class="text-center" style="color:red">متاسفانه! پرداخت شما موفقیت آمیز نبود.</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr><p class="text-center" style="color:orange">درصورت کسر شدن موجودی از حسابتان ،‌مبلغ کسر شده طی ۱۵ دقیقه الی ۷۲ ساعت کاری آینده از سمت بانک برگشت داده میشود. </p>';
-        $wpdb->update("wp_projects_donors" ,
+        $status= '<p class="text-center" style="color:red">متاسفانه! پرداخت شما موفقیت آمیز نبود.</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr></br><p class="text-center" style="color:orange">درصورت کسر شدن موجودی از حسابتان ،‌مبلغ کسر شده طی ۱۵ دقیقه الی ۷۲ ساعت کاری آینده از سمت بانک برگشت داده میشود. </p>';
+        $wpdb->update($table ,
             [
                 'status' => 0,
                 'trans_id' =>$_POST[ "transid" ],
@@ -127,7 +138,7 @@ if (isset($_POST['pay'])) {
     } else {
         $status=  '<p class="text-center" style="color:red"> خطا در پرداخت ' . $result. '</p>';
         $error=ppErr($result);
-        $wpdb->update("wp_projects_donors" ,
+        $wpdb->update($table ,
             [
                 'status' => -1,
                 'trans_id' =>$_POST[ "transid" ],

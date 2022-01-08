@@ -1,6 +1,7 @@
 <?php
 
 include "inc/projects.php";
+include "woocommerce/woo-func.php";
 
 // Load the theme stylesheets
 function theme_styles()
@@ -56,8 +57,6 @@ function register_my_menus() {
 
         )
     );
-
-
 
 }
 add_action( 'init', 'register_my_menus' );

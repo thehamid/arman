@@ -28,7 +28,7 @@ if (isset($_POST['pay'])) {
     $callback_url =add_query_arg(array('entry' => $pay_id),  $_POST['project_link']);
 
     $data = [
-       // 'pin' => 'AD43F9951C17C475428B',
+        // 'pin' => 'AD43F9951C17C475428B',
         'pin' => 'aqayepardakht',
         'amount' => $price,
         'callback' => $callback_url,
@@ -54,7 +54,7 @@ if (isset($_POST['pay'])) {
     if ($result && !is_numeric($result)) {
         header('Location: https://panel.aqayepardakht.ir/startpay/' . $result);
     } else {
-       $error=ppErr($result);
+        $error=ppErr($result);
 
     }
 
@@ -83,7 +83,7 @@ if (isset($_POST['pay'])) {
 
 
 
-   // $pin = 'AD43F9951C17C475428B';
+    // $pin = 'AD43F9951C17C475428B';
     $pin = 'aqayepardakht';
 
     $url = 'https://panel.aqayepardakht.ir/api/verify/';
@@ -150,33 +150,33 @@ if (isset($_POST['pay'])) {
 
 
 
-   $verify=true;
+    $verify=true;
 
 }
 
-    function ppErr($res=''){
-		switch($res)
-		{
-			case '-1' : $prompt="مبلغ نمیتواند خالی باشد."; break;
-			case '-2' : $prompt="کد پین درگاه نمیتواند خالی باشد."; break;
-			case '-3' : $prompt="callback نمیتواند خالی باشد."; break;
-			case '-4' : $prompt="مبلغ را به صورت عددی وارد کنید."; break;
-			case '-5' : $prompt="مبلغ باید بزرگتر از 100 تومان باشد."; break;
-			case '-6' : $prompt="کد پین درگاه اشتباه است."; break;
-			case '-7' : $prompt="آی پی درگاه اشتباه است."; break;
-			case '-8' : $prompt="شماره تراکنش نمیتواند خالی باشد."; break;
-			case '-9' : $prompt="تراکنش مورد نظر پیدا نشد."; break;
-			case '-10': $prompt="کد پین درگاه با درگاه تراکنش مطابقت ندارد."; break;
-			case '-11': $prompt="مبلغ وارد شده با مبلغ تراکنش برابری ندارد."; break;
-			case '-12': $prompt="بانک وارد شده اشتباه میباشد."; break;
-			case '-13': $prompt="درگاه غیر فعال است."; break;
-			case '-14': $prompt="درگاه برروی سایت دیگری درحال استفاده است."; break;
-			default : $prompt="خطای نامشخص!";
-		}
-		$err = "<meta charset=UTF-8>";
-		$err .= "خطا ({$res}) : {$prompt}";
-		return $err;
-	}
+function ppErr($res=''){
+    switch($res)
+    {
+        case '-1' : $prompt="مبلغ نمیتواند خالی باشد."; break;
+        case '-2' : $prompt="کد پین درگاه نمیتواند خالی باشد."; break;
+        case '-3' : $prompt="callback نمیتواند خالی باشد."; break;
+        case '-4' : $prompt="مبلغ را به صورت عددی وارد کنید."; break;
+        case '-5' : $prompt="مبلغ باید بزرگتر از 100 تومان باشد."; break;
+        case '-6' : $prompt="کد پین درگاه اشتباه است."; break;
+        case '-7' : $prompt="آی پی درگاه اشتباه است."; break;
+        case '-8' : $prompt="شماره تراکنش نمیتواند خالی باشد."; break;
+        case '-9' : $prompt="تراکنش مورد نظر پیدا نشد."; break;
+        case '-10': $prompt="کد پین درگاه با درگاه تراکنش مطابقت ندارد."; break;
+        case '-11': $prompt="مبلغ وارد شده با مبلغ تراکنش برابری ندارد."; break;
+        case '-12': $prompt="بانک وارد شده اشتباه میباشد."; break;
+        case '-13': $prompt="درگاه غیر فعال است."; break;
+        case '-14': $prompt="درگاه برروی سایت دیگری درحال استفاده است."; break;
+        default : $prompt="خطای نامشخص!";
+    }
+    $err = "<meta charset=UTF-8>";
+    $err .= "خطا ({$res}) : {$prompt}";
+    return $err;
+}
 
 
 
@@ -189,7 +189,7 @@ if (isset($_POST['pay'])) {
             <section class="col-lg-6">
                 <section class="single-hero">
                     <div class="single-title">
-                      <h3><?php the_title(); ?> </h3>
+                        <h3><?php the_title(); ?> </h3>
                     </div>
 
                     <div class="single-img">
@@ -253,9 +253,9 @@ if (isset($_POST['pay'])) {
                             <span>
                                     <span class="tit"><i class="fad fa-alarm-clock"></i>زمان باقیمانده</span>
                                     <span class="num"> <?php if(isset($datediff) && !empty($datediff)) : ?>
-                                        <?php if($datediff>0): ?>
-                                            <?php echo round($datediff / (60 * 60 * 24)) ." روز"; ?>
-                                              <?php else: ?>
+                                            <?php if($datediff>0): ?>
+                                                <?php echo round($datediff / (60 * 60 * 24)) ." روز"; ?>
+                                            <?php else: ?>
                                                 <?php echo "تمام شد" ?>
                                             <?php endif; ?>
                                         <?php endif; ?> </span>
@@ -269,8 +269,8 @@ if (isset($_POST['pay'])) {
             </section>
 
 
-          <section class="single-content col-lg-6">
-              <h4>توضیحات</h4>
+            <section class="single-content col-lg-6">
+                <h4>توضیحات</h4>
                 <?php the_content(); ?>
 
             </section>
@@ -307,16 +307,16 @@ if (isset($_POST['pay'])) {
                                 <button type="submit" class="btn btn-theme" name="pay"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>
                             </div>
                         </form>
-                            <p class="text-danger"><?php echo $error; ?></p>
+                        <p class="text-danger"><?php echo $error; ?></p>
 
                     </div>
 
 
                 <?php }else{ ?>
 
-                        <h3 class="text-warning text-center border border-warning p-5">با سپاس از همراهی شما<br>این پروژه پایان یافت</h3>
+                    <h3 class="text-warning text-center border border-warning p-5">با سپاس از همراهی شما<br>این پروژه پایان یافت</h3>
 
-                 <?php }?>
+                <?php }?>
 
             </section>
 

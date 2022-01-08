@@ -684,11 +684,24 @@ footer .footer-widget{
     text-decoration: none;
 }
 
-
-.footer-widget h3{
+.footer-widget h2{
     font-weight: 500;
     font-size: 18px;
 }
+
+.footer-widget h2::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--purple);
+    margin-top: 15px;
+}
+
+.footer-widget h3{
+     font-weight: 500;
+     font-size: 18px;
+ }
 
 .footer-widget h3::after {
     content: '';

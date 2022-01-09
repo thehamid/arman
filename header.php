@@ -43,7 +43,7 @@
 
 
             <div class="top-menu">
-                <a href="<?php echo home_url(); ?>/my-account" class="header-icon"><i class="fal fa-user"></i></a>
+                <a  class="header-icon"><i class="fal fa-user">  <?php echo do_shortcode('[dm-modal]');?></i></a>
                 <a href="<?php echo home_url(); ?>/cart" class="header-icon"><i class="fal fa-shopping-cart"></i></a>
                 <a href="<?php echo home_url(); ?>/donation" class="btn btn-theme"><i class="fal fa-heart"></i>کمک آرمانی</a>
             </div>

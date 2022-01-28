@@ -32,6 +32,7 @@ function register_projects_post_type() {
         'menu_position'      => null,
         'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt'),
         'rewrite'       => ['slug' => 'projects'],
+        'show_in_rest' => true,
     );
 
     register_post_type( 'projects', $args );

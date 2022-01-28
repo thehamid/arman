@@ -6,7 +6,7 @@
             </div>
 
             <div class="content-vol wow fadeInLeft">
-                <h3>شما هم عضوی از خانه آرمان شوید</h3>
+                <h3>شما هم عضوی از خانواده بزرگ خانه آرمان شوید</h3>
 
                 <a href="<?php echo home_url(); ?>\vol-register" class="btn btn-theme">عضویت داوطلبانه</a>
             </div>

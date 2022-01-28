@@ -67,6 +67,19 @@ function mytheme_custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'mytheme_custom_excerpt_length', 999 );
 
+//Hide Login Errors in WordPress
+function no_wordpress_errors(){
+    return 'username or password is wrong';
+}
+add_filter( 'login_errors', 'no_wordpress_errors' );
+
+//Hide Version WordPress
+function wpb_remove_version() {
+    return '';
+}
+add_filter('the_generator', 'wpb_remove_version');
+
+
 //rahnamaye safahat
 function web_breadcrumb(){
     if(!is_home()){

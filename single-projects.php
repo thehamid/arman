@@ -8,13 +8,14 @@ global $error;
 global $table;
 if (isset($_POST['pay'])) {
 
+
     $table=$wpdb->prefix . 'projects_donors';
     $wpdb->insert($table ,
         [
             'project_id' => $_POST['project_id'],
             'name' => $_POST['name'],
             'phone' => $_POST['phone'],
-            'value' => $_POST['value'],
+            'value' => toEnNumber($_POST['value']),
             'status' => -2,
             'trans_id' =>0,
             'date_created' =>date("Y-m-d h:i:sa")
@@ -24,7 +25,7 @@ if (isset($_POST['pay'])) {
 
 
     $order_id = $_POST['project_id'];
-    $price = $_POST['value'];
+    $price =toEnNumber($_POST['value']);
     $callback_url =add_query_arg(array('entry' => $pay_id),  $_POST['project_link']);
 
     $data = [
@@ -178,6 +179,15 @@ function ppErr($res=''){
     return $err;
 }
 
+function toEnNumber($input) {
+    $replace_pairs = array(
+        '۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
+        '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'
+    );
+
+    return strtr( $input, $replace_pairs );
+}
+
 
 
 ?>
@@ -239,14 +249,14 @@ function ppErr($res=''){
                                 <span>
                                     <span class="tit"><i class="fad fa-bullseye"></i>هدف</span>
                                     <span class="num">  <?php if (isset($target) && !empty($target)) : ?>
-                                            <?php echo $target; ?>
+                                            <?php echo number_format($target); ?>
                                         <?php endif; ?> تومان</span>
                                 </span>
                             <div class="line"></div>
                             <span>
                                     <span class="tit"><i class="fad fa-box-heart"></i>اهدایی</span>
                                     <span class="num">  <?php if (isset($start)) : ?>
-                                            <?php echo $start; ?>
+                                            <?php echo number_format($start); ?>
                                         <?php endif; ?> تومان</span>
                                 </span>
                             <div class="line"></div>
@@ -302,6 +312,8 @@ function ppErr($res=''){
                                 <label  class="form-label">مبلغ اهدایی به تومان </label>
                                 <input type="text" class="form-control numericMask" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
                             </div>
+
+
 
                             <div class="col-12">
                                 <button type="submit" class="btn btn-theme" name="pay"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>

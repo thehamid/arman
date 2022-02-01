@@ -59,14 +59,14 @@
                                 <span>
                                     <div class="tit"><i class="fad fa-bullseye"></i>هدف</div>
                                     <div class="num">  <?php if(isset($target) && !empty($target)) : ?>
-                                            <?php echo $target; ?>
+                                            <?php echo number_format($target); ?>
                                         <?php endif; ?> تومان</div>
                                 </span>
                                 <div class="line"></div>
                                 <span>
                                     <div class="tit"><i class="fad fa-box-heart"></i>اهدایی</div>
                                     <div class="num">  <?php if(isset($start)) : ?>
-                                            <?php echo $start; ?>
+                                            <?php echo number_format($start); ?>
                                         <?php endif; ?> تومان</div>
                                 </span>
                                 <div class="line"></div>
@@ -86,7 +86,7 @@
                         </div>
 
                             <?php if($datediff>0 && $start<$target){ ?>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-heart"></i>کمک شما</a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-heart"></i>حمایت می‌کنم</a>
                             <?php }else{ ?>
                         <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-flag"></i>پروژه پایان یافت</a>
                              <?php } ?>

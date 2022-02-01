@@ -568,6 +568,7 @@ input.search-text::-webkit-search-cancel-button {
     object-fit: cover;
     display: block;
     border-radius: 10px;
+    height: auto;
 }
 .crowd-funding2 .cf-item a{
     text-align: center;

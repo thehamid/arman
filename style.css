@@ -46,6 +46,7 @@ a {
 a:hover {
     color: var(--blue);
 }
+
 .btn-theme{
     display: flex;
     align-items: center;
@@ -1414,7 +1415,7 @@ footer .footer-widget{
 }
 
 /* ---------Products Page----------------------*/
-.products__main{
+.products__page{
     min-height: 500px;
 }
 .product-item{

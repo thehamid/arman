@@ -12,7 +12,8 @@
             ); ?>
             <?php while ($loop->have_posts()) : $loop->the_post();
                 global $product; ?>
-                <article class="product-item col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <article class="product-item">
                     <a href="<?php echo $product->get_permalink(); ?>">
                         <div class="image">
                             <img src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>"/>
@@ -24,7 +25,7 @@
                         </div>
                     </a>
                 </article>
-
+            </div>
             <?php endwhile; ?>
 
         </div>

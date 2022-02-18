@@ -1,4 +1,5 @@
 <?php
+
 include "meta/meta.php";
 
 function register_projects_post_type() {

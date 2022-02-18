@@ -1,14 +1,18 @@
 <?php
 
-function projects_init()
+function projects_init($hook)
 {
+
     wp_enqueue_style('my_meta_css', get_template_directory_uri() . '/inc/meta/meta.css');
     wp_enqueue_style('date_picker_css', get_template_directory_uri() . '/inc/meta/persianDatepicker-default.css');
-    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/inc/meta/jquery-3.3.1.js');
+   // wp_enqueue_script( 'jq-load', get_template_directory_uri() . '/inc/meta/jquery-3.3.1.js',array( 'jquery' ));
     wp_enqueue_script('date_picker_js', get_template_directory_uri() . '/inc/meta/persianDatepicker.min.js');
     wp_enqueue_script('my_meta_js', get_template_directory_uri() . '/inc/meta/meta.js', array( 'jquery' ), '1.0', true );
+    if( 'edit.php' != $hook )
+        return;
+    wp_enqueue_script( 'jq-load', get_template_directory_uri() . '/inc/meta/jquery-3.3.1.js');
 }
-add_action('admin_init','projects_init');
+add_action('admin_enqueue_scripts','projects_init');
 
 
 

@@ -332,6 +332,11 @@ body .woocommerce .product-name a{
     pointer-events: none;
     cursor: default;
 }
+.woocommerce-checkout #order_review_heading,
+.woocommerce-checkout #order_review{
+    width: 100%;
+    float: none;
+}
 
 @media only screen and (max-width: 1139px) {
     .woocommerce-cart .entry-content form {
@@ -381,7 +386,7 @@ body .woocommerce .product-name a{
     }
 
     .woocommerce-checkout #order_review_heading,
-    .woocommerce-checkout #order_review {
+    .woocommerce-checkout #order_review{
         width: 100%;
         float: none;
     }

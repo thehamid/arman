@@ -48,7 +48,7 @@ A couple things to note...
 .woocommerce-cart table.cart th,
 .woocommerce-checkout table.cart th,
 .woocommerce-checkout table.shop_table th {
-    color: #034997;
+    color: #8523ff;
     font-size: 14px;
     font-size: 1.4rem;
 }
@@ -65,7 +65,7 @@ A couple things to note...
 }
 
 .woocommerce-cart .woocommerce table.shop_table th {
-    border-bottom: 2px solid #034997;
+    border-bottom: 2px solid #8523ff;
 }
 
 .woocommerce-cart .woocommerce table.shop_table,
@@ -130,7 +130,7 @@ body .woocommerce #respond input#submit.alt,
 body .woocommerce a.button.alt,
 body .woocommerce button.button.alt,
 body .woocommerce input.button.alt {
-    background: #bea86f !important;
+    background: #AF2DFF !important;
     font-weight: 500;
 }
 
@@ -138,7 +138,7 @@ body .woocommerce #respond input#submit.alt:hover,
 body .woocommerce a.button.alt:hover,
 body .woocommerce button.button.alt:hover,
 body .woocommerce input.button.alt:hover {
-    background: #034997 !important;
+    background: #8523ff !important;
 }
 
 body .woocommerce .cart .button,
@@ -147,7 +147,7 @@ body .woocommerce #respond input#submit,
 body .woocommerce a.button,
 body .woocommerce button.button,
 body .woocommerce input.button {
-    background: #034997 !important;
+    background: #8523ff !important;
     color: #fff;
     font-weight: 500;
     border-radius: 10px;
@@ -307,7 +307,7 @@ body .woocommerce-checkout table.shop_table td {
     text-align: center;
     text-transform: uppercase;
     padding: 10px 0px;
-    border-top: 1px solid #bea86f;
+    border-top: 1px solid #AF2DFF;
     border-bottom: 1px solid #846e42;
 }
 .woocommerce .woocommerce-order .woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received{
@@ -327,7 +327,7 @@ body .woocommerce form .form-row textarea {
     max-width: 100%;
 }
 
-body .woocommerce .product-name a {
+body .woocommerce .product-name a{
     color: #000;
     pointer-events: none;
     cursor: default;

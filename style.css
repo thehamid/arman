@@ -611,6 +611,12 @@ input.search-text::-webkit-search-cancel-button {
     border-left: 1px solid #d4d4d4;
 }
 
+@media screen and (max-width:480px) {
+    .crowd-funding2 .cf-item .cf-content .cf-content-footer span .num{
+        font-size: 20px;
+    }
+}
+
 /*-----------volunteer---------------*/
 .volunteer{
     margin-top: 250px;
@@ -1273,6 +1279,12 @@ footer .footer-widget{
     display: block;
     width: 50%;
 
+}
+
+@media screen and (max-width:480px) {
+    .project-info .cf-content .cf-content-footer span .num{
+        font-size: 18px;
+    }
 }
 
 /* ---------Product Single-Page----------------------*/

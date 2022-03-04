@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="section-title">
-            <h4>پروژه‌های آینده</h4>
+            <h4>پروژه‌های حمایتی</h4>
             <a href="<?php echo home_url(); ?>\projects" class="btn btn-outline-secondary"> همه پروژه‌ها</a>
         </div>
 

@@ -109,3 +109,21 @@ $(function() {
         e.stopImmediatePropagation();
     });
 });
+
+
+///Script for single-project.php
+$(document).ready(function(){
+
+
+    $(".btn-check").click(function(){
+
+        var radioValue = $("input[name='project-option']:checked").val();
+
+        if(radioValue){
+
+            $("input[name='value']").val(radioValue);
+
+        }
+
+    });
+})

@@ -48,9 +48,12 @@
 
                                 ?>
                                 <div class="progress-bar bg-info" role="progressbar"
-                                     style="width: <?php echo $percent; ?>%"
+                                     style="width:<?php echo $percent; ?>%"
                                      aria-valuenow="<?php echo $percent; ?>"
-                                     aria-valuemin="0" aria-valuemax="100"> <?php echo $percent; ?>%</div>
+                                     aria-valuemin="0" aria-valuemax="100">
+
+                                    <div class="progress-value"><?php echo $percent; ?>%</div>
+                                </div>
                             </div>
 
 

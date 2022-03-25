@@ -43,7 +43,6 @@ function project_meta_box_handler($post)
 
     ?>
     <div class="my_meta_control">
-
         <label>مبلغ شروع پروژه</label>
         <p>
             <input type="number" name="p_start" value="<?php if(isset($start)) echo $start; ?>">

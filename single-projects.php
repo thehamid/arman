@@ -6,6 +6,7 @@ global $status;
 global $pay_id;
 global $error;
 global $table;
+global $donors_count;
 if (isset($_POST['pay'])) {
 
 
@@ -189,7 +190,6 @@ function toEnNumber($input) {
 }
 
 
-
 ?>
 <?php get_header(); ?>
 
@@ -240,7 +240,8 @@ function toEnNumber($input) {
                             <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
                                  style="width: <?php echo $percent; ?>%"
                                  aria-valuenow="<?php echo $percent; ?>"
-                                 aria-valuemin="0" aria-valuemax="100"><span class="text-dark"> <?php echo $percent; ?>%</span>
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-value"><?php echo $percent; ?>%</div>
                             </div>
                         </div>
 
@@ -274,6 +275,16 @@ function toEnNumber($input) {
 
 
                     </div>
+                        <?php
+                        $donors_count = $wpdb->get_var( $wpdb->prepare(
+                            "SELECT COUNT(*) AS id FROM {$wpdb->prefix}projects_donors WHERE status=1 AND project_id={$post->ID}"
+
+                        ) );
+
+                        ?>
+                    <h6> <i class="fad fa-hands-heart"></i><span><?php echo $donors_count; ?> </span>  نفر حامی ما در تکمیل این پروژه بوده‌اند</h6>
+
+
                 </aside>
 
             </section>
@@ -326,7 +337,8 @@ function toEnNumber($input) {
                             </div>
                             <div class="col-12">
                                 <label  class="form-label">مبلغ اهدایی به تومان </label>
-                                <input type="text" class="form-control numericMask" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
+                                <input id="input_number" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
+                                <span id="farsi">.</span>
                             </div>
 
 

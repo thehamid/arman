@@ -611,6 +611,41 @@ input.search-text::-webkit-search-cancel-button {
     border-left: 1px solid #d4d4d4;
 }
 
+.progress{
+    height: 15px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: visible;
+    line-height: 15px;
+    margin: 20px 0 40px 0;
+}
+.progress .progress-bar{
+    border-radius: 20px;
+    position: relative;
+    overflow: unset;
+}
+.progress .progress-value{
+    position: absolute;
+    top: -19px;
+    left: -16px;
+    font-size: 14px;
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 5px;
+    background: var(--purple);
+    border: 1px solid var(--purple);
+}
+.progress .progress-value:after{
+    content: "";
+    border-top: 10px solid var(--purple);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    bottom: -6px;
+    left: 25%;
+}
+
+
 @media screen and (max-width:480px) {
     .crowd-funding2 .cf-item .cf-content .cf-content-footer span .num{
         font-size: 20px;
@@ -1269,6 +1304,20 @@ footer .footer-widget{
 }
 .project-info .cf-content .cf-content-footer .line{
     border-left: 1px solid #d4d4d4;
+}
+
+.project-info h6{
+    text-align: center;
+}
+
+.project-info h6 i{
+    font-size: 30px;
+    color: var(--purple-dark);
+    padding: 10px;
+}
+
+.project-info h6 span{
+    font-size: 25px;
 }
 .project-pay{
     padding: 20px;

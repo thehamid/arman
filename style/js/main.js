@@ -122,8 +122,21 @@ $(document).ready(function(){
         if(radioValue){
 
             $("input[name='value']").val(radioValue);
-
+            $('#farsi').text(wordifyfa(radioValue)+"تومان");
         }
 
     });
-})
+});
+
+$('#input_number').keyup(function () {
+    $('#farsi').text(wordifyfa($(this).val())+"تومان");
+});
+
+
+
+
+
+
+
+
+

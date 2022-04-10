@@ -133,9 +133,19 @@ $('#input_number').keyup(function () {
 });
 
 
-
-
-
+//Start gf date picker script
+gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
+    if ( formId == 1 && fieldId == 21 ) {
+        optionsObj.minDate = 2;
+        optionsObj.maxDate = 20;
+    }
+    return optionsObj;
+} );
+gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
+    jQuery( ".datepicker" ).attr('readonly','readonly');
+    return optionsObj;
+});
+//End gf date picker script
 
 
 

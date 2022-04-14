@@ -127,6 +127,18 @@ header .header-top .top-menu .header-icon{
     border-radius: 1000px;
     padding: 10px 5px;
     margin: 0 5px;
+    position: relative;
+}
+
+#count-cart-items{
+    background-color: #cc68db;
+    padding: 1px 8px;
+    border-radius: 1000px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
 }
 
 .header-bottom nav ul li{

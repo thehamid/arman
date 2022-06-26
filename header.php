@@ -19,7 +19,16 @@
                 </div>
                 <div class="logo" title="<?php bloginfo( 'name' ); ?>">
 
-                    <?php the_custom_logo(); ?>
+                    <div class="site-branding">
+                        <?php the_custom_logo(); ?>
+                    </div>
+                    <div class="site-branding-alternative">
+                        <?php
+                        $sticky_logo_url = get_theme_mod( 'mobile_logo' );
+                        if ($sticky_logo_url )
+                            echo '<img src="'.$sticky_logo_url.'" alt = "logo alt test" class="mobile_logo">';
+                        ?>
+                    </div>
 
                     <div class="site-branding-text">
                         <?php if ( is_front_page() ) : ?>

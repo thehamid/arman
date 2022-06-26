@@ -110,10 +110,19 @@ header .header-top .logo {
 }
 
 
-header .header-top .logo img{
+header .header-top .logo .site-branding img{
+    max-width: 100%;
     width: 220px;
     height: auto;
     object-fit: contain;
+}
+
+header .header-top .logo .site-branding-alternative img{
+    max-width: 100%;
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    display: none;
 }
 
 header .header-top .top-menu{
@@ -176,15 +185,19 @@ header .header-top .top-menu .header-icon{
 }
 
 @media screen and (max-width: 480px) {
-    header .header-top .logo img{
-        width: 120px;
-    }
-    header .header-top .header-icon{
+    header .header-top .logo .site-branding img{
         display: none;
     }
-    header .header-top .btn-theme i{
-        display: none;
+
+    header .header-top .logo .site-branding-alternative img{
+        display: block;
     }
+    header .header-top .top-menu .btn-theme{
+        flex-direction: column;
+        padding: 5px;
+        font-size: 12px!important;
+    }
+
 
 }
 /********start menu*********/

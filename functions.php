@@ -30,6 +30,40 @@ function theme_styles()
 }
 add_action('wp_enqueue_scripts', 'theme_styles');
 
+function mytheme_customize_register( $wp_customize ) {
+    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+    $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+    if ( isset( $wp_customize->selective_refresh ) ) {
+        $wp_customize->selective_refresh->add_partial(
+            'blogname',
+            array(
+                'selector'        => '.site-title a',
+                'render_callback' => 'mytheme_customize_partial_blogname',
+            )
+        );
+        $wp_customize->selective_refresh->add_partial(
+            'blogdescription',
+            array(
+                'selector'        => '.site-description',
+                'render_callback' => 'mytheme_customize_partial_blogdescription',
+            )
+        );
+    }
+
+    $wp_customize->add_setting('mobile_logo');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mobile_logo', array(
+        'label' => 'Mobile Logo',
+        'section' => 'title_tagline',
+        'settings' => 'mobile_logo',
+        'priority' => 8
+    )));
+}
+add_action( 'customize_register', 'mytheme_customize_register' );
+
+
+
 //Theme Support
 function arman_setup_theme(){
     add_theme_support('title-tag');
@@ -47,8 +81,10 @@ function arman_setup_theme(){
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
     ) );
+
 }
 add_action('after_setup_theme','arman_setup_theme');
+
 
 //Menu Register
 function register_my_menus() {

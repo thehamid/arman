@@ -33,6 +33,8 @@ function wc_refresh_cart_fragments( $fragments ){
     $count_normal = '<span id="count-cart-items">' .  $cart_count . '</span>';
     if($cart_count>0) {
         $fragments['#count-cart-items'] = $count_normal;
+    }elseif ($cart_count==0){
+        $fragments['#count-cart-items'] ='';
     }
     // Mobile version
     $count_mobile = '<span id="count-cart-itemob">' .  $cart_count . '</span>';

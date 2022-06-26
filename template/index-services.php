@@ -2,9 +2,17 @@
     <div class="container">
         <div class="row wow fadeInDown">
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <a href="<?php echo home_url(); ?>\donation" class="s-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/pay.png" alt="">
-                    <h4>پرداخت آنلاین</h4>
+                <a href="<?php echo home_url(); ?>\#" class="s-item">
+
+                    <span class="position-relative">
+                         <img  src="<?php echo get_template_directory_uri(); ?>/img/bazzar.png" alt="">
+                        <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-warning">
+                             بزودی
+                        </span>
+                    </span>
+
+                    <h4> بازار آرمان</h4>
+
                 </a>
 
             </div>

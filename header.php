@@ -26,7 +26,7 @@
                         <?php
                         $sticky_logo_url = get_theme_mod( 'mobile_logo' );
                         if ($sticky_logo_url )
-                            echo '<img src="'.$sticky_logo_url.'" alt = "logo alt test" class="mobile_logo">';
+                            echo '<a href="'. esc_url( home_url() ) .'"><img src="'.$sticky_logo_url.'" alt = "logo alt test" class="mobile_logo"></a>';
                         ?>
                     </div>
 

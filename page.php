@@ -6,9 +6,7 @@
 ?>
 
 <?php get_header(); ?>
-<div class="page" role="main">
-     <div class="container">
-<!--        --><?php //if(function_exists('web_breadcrumb')) web_breadcrumb(); ?>
+<div class="page container" role="main">
 
         <?php while (have_posts()) : the_post(); ?>
 
@@ -27,7 +25,7 @@
         <?php endif; ?>
         <?php endwhile; ?>
 
-    </div>
+
 </div>
 
 

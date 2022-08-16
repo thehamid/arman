@@ -52,7 +52,7 @@
 
 
             <div class="top-menu">
-                <a  class="header-icon"><i class="fal fa-user">  <?php echo do_shortcode('[dm-modal]');?></i></a>
+                <a  class="header-icon"><i class="fal fa-user"> </i> <?php echo do_shortcode('[dm-modal]');?></a>
 
                 <a href="<?php echo home_url(); ?>/cart" class="header-icon"><i class="fal fa-shopping-cart"></i> <span id="count-cart-items"></span></a>
                 <a href="<?php echo home_url(); ?>/donation" class="btn btn-theme"><i class="fal fa-heart"></i>کمک آرمانی</a>

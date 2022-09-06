@@ -8,9 +8,9 @@ function theme_styles()
 {
 
     // Load all of the styles that need to appear on all pages
-    wp_enqueue_style( 'wc-style', get_template_directory_uri() . '/style/css/wc_custom_style.css' );
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/style/css/bootstrap.min.css' );
-    wp_enqueue_style( 'bootstrap-rtl', get_template_directory_uri() . '/style/css/bootstrap-rtl.css' );
+   wp_enqueue_style( 'wc-style', get_template_directory_uri() . '/style/css/wc_custom_style.css' );
+   wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/style/css/bootstrap.min.css' );
+   wp_enqueue_style( 'bootstrap-rtl', get_template_directory_uri() . '/style/css/bootstrap-rtl.css' );
     wp_enqueue_style( 'fa', get_template_directory_uri() . '/style/css/fa5.css' );
     wp_enqueue_style( 'font', get_template_directory_uri() . '/style/css/font.css' );
     wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/style/css/owl.carousel.min.css');

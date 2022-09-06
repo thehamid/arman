@@ -44,7 +44,7 @@ function wc_refresh_cart_fragments( $fragments ){
 }
 
 
-add_filter('woocommerce_checkout_fields','addBootstrapToCheckoutFields');
+//add_filter('woocommerce_checkout_fields','addBootstrapToCheckoutFields');
 function addBootstrapToCheckoutFields($fields) {
     foreach ($fields as &$fieldset) {
         foreach ($fieldset as &$field) {
@@ -131,21 +131,33 @@ function custom_quantity_fields_script(){
     <?php
 }
 
-/********Check out field customize*********/
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
-function custom_override_checkout_fields( $fields ) {
-    //unset($fields['billing']['billing_first_name']);
-    //unset($fields['billing']['billing_last_name']);
-    unset($fields['billing']['billing_company']);
-   // unset($fields['billing']['billing_address_1']);
-    //unset($fields['billing']['billing_address_2']);
-   // unset($fields['billing']['billing_city']);
-   // unset($fields['billing']['billing_postcode']);
-    unset($fields['billing']['billing_country']);
-   // unset($fields['billing']['billing_state']);
-    //unset($fields['billing']['billing_phone']);
-    //unset($fields['billing']['billing_email']);
 
+
+///********Checkout fields priority *********/
+add_filter("woocommerce_checkout_fields", "custom_override_checkout_fields", 1);
+function custom_override_checkout_fields($fields) {
+    $fields['billing']['billing_first_name']['priority'] = 1;
+    $fields['billing']['billing_last_name']['priority'] = 2;
+    $fields['billing']['billing_company']['priority'] = 3;
+    $fields['billing']['billing_country']['priority'] = 4;
+    $fields['billing']['billing_state']['priority'] = 5;
+    $fields['billing']['billing_city']['priority'] = 6;
+    $fields['billing']['billing_address_1']['priority'] = 7;
+    $fields['billing']['billing_address_2']['priority'] = 8;
+    $fields['billing']['billing_postcode']['priority'] = 9;
+    $fields['billing']['billing_email']['priority'] = 10;
+    $fields['billing']['billing_phone']['priority'] = 11;
+
+    unset($fields['billing']['billing_company']);
     return $fields;
 }
 
+add_filter( 'woocommerce_default_address_fields', 'custom_override_default_locale_fields' );
+function custom_override_default_locale_fields( $fields ) {
+    $fields['state']['priority'] = 5;
+    $fields['city']['priority'] = 6;
+    $fields['address_1']['priority'] = 7;
+    $fields['address_2']['priority'] = 8;
+    $fields['postcode']['priority'] = 9;
+    return $fields;
+}

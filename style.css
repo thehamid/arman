@@ -35,7 +35,6 @@ body {
     background: #fff;
     margin: 0;
     padding: 0;
-    position: relative;
 }
 
 a {
@@ -562,7 +561,7 @@ input.search-text::-webkit-search-cancel-button {
 }
 
 .info .info-item .img-info{
-     max-width: 100%;
+    max-width: 100%;
 }
 
 .info .info-item .img-info img{
@@ -586,7 +585,7 @@ input.search-text::-webkit-search-cancel-button {
     margin-top: 15px;
 }
 .info .info-item .content-info .title-info{
-   display: flex;
+    display: flex;
     align-items: center;
 
 }
@@ -868,9 +867,9 @@ footer .footer-widget{
 }
 
 .footer-widget h3{
-     font-weight: 500;
-     font-size: 18px;
- }
+    font-weight: 500;
+    font-size: 18px;
+}
 
 .footer-widget h3::after {
     content: '';
@@ -1202,7 +1201,6 @@ footer .footer-widget{
 /* ---------Page Styles----------------------*/
 .page {
     min-height: 850px;
-    margin-top: 100px;
     padding: 30px 0;
 }
 
@@ -1215,6 +1213,7 @@ footer .footer-widget{
     padding: 20px;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 100px;
 }
 .page .page-content{
     max-width: 900px;
@@ -1281,7 +1280,7 @@ footer .footer-widget{
 }
 
 .page-404 img{
-   width: 220px;
+    width: 220px;
     height: auto;
     margin: 0 auto;
     display: block;
@@ -1571,7 +1570,7 @@ footer .footer-widget{
 }
 
 .woocommerce .product .summary .woocommerce-product-details__short-description {
-   padding: 20px;
+    padding: 20px;
     text-align: justify-all;
 }
 

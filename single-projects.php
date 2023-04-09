@@ -9,7 +9,7 @@ global $table;
 global $donors_count;
 if (isset($_POST['pay'])) {
 
-
+    sendMessage("حمید","+989368420280");
     $table=$wpdb->prefix . 'projects_donors';
     $wpdb->insert($table ,
         [
@@ -127,7 +127,8 @@ if (isset($_POST['pay'])) {
 
 
     } else if ( $result === "0" ) {
-        $status= '<p class="text-center" style="color:red">متاسفانه! پرداخت شما موفقیت آمیز نبود.</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr></br><p class="text-center" style="color:orange">درصورت کسر شدن موجودی از حسابتان ،‌مبلغ کسر شده طی ۱۵ دقیقه الی ۷۲ ساعت کاری آینده از سمت بانک برگشت داده میشود. </p>';
+        $sms=sendMessage("حمید","+989368420280");
+        $status= '<p class="text-center" style="color:red">متاسفانه! پرداخت شما موفقیت آمیز نبود.</p></br><p class="text-center">کد پیگیری تراکنش : ' . $_POST[ "transid" ] . '</p><hr></br><p class="text-center" style="color:orange">درصورت کسر شدن موجودی از حسابتان ،‌مبلغ کسر شده طی ۱۵ دقیقه الی ۷۲ ساعت کاری آینده از سمت بانک برگشت داده میشود. </p>'.$sms;
         $wpdb->update($table ,
             [
                 'status' => 0,
@@ -136,6 +137,7 @@ if (isset($_POST['pay'])) {
             ],
             ['id' =>$_REQUEST['entry']]
         );
+
 
     } else {
         $status=  '<p class="text-center" style="color:red"> خطا در پرداخت ' . $result. '</p>';
@@ -187,6 +189,25 @@ function toEnNumber($input) {
     );
 
     return strtr( $input, $replace_pairs );
+}
+
+
+function sendMessage($name,$phone){
+
+    $username = "09136030881";
+    $password = 'faraz0067411401';
+    $from = "5000125475";
+    $pattern_code = "87hxys1chzu5wan";
+    $to = $phone;
+    $input_data = array("tracking-code" => "1054 4-41", "name" =>$name);
+    $url = "https://ippanel.com/patterns/pattern?username=" . $username . "&password=" . urlencode($password) . "&from=$from&to=" . json_encode($to) . "&input_data=" . urlencode(json_encode($input_data)) . "&pattern_code=$pattern_code";
+    $handler = curl_init($url);
+    curl_setopt($handler, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($handler, CURLOPT_POSTFIELDS, $input_data);
+    curl_setopt($handler, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($handler);
+    echo $response;
+
 }
 
 

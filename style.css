@@ -825,7 +825,7 @@ input.search-text::-webkit-search-cancel-button {
 .percent svg circle:last-of-type {
     stroke-dasharray: 312px;
     stroke-dashoffset: calc(312px - (312px * var(--percent)) / 100);
-
+    animation: stroke 10s linear forwards;
 }
 
 .percent .number {
@@ -841,17 +841,29 @@ input.search-text::-webkit-search-cancel-button {
 }
 
 
-.btn i{
-    margin: 5px;
-}
-
 
 @media screen and (max-width:480px) {
     .crowd-funding2 .cf-item .cf-content .cf-content-footer span .num{
         font-size: 20px;
     }
 }
+/* Keyframes */
 
+@keyframes stroke {
+
+    0% {
+        stroke-dasharray:0;
+        stroke-dashoffset:0;
+
+    }
+
+    100% {
+        stroke-dasharray: 625px;
+        stroke-dashoffset: calc(625px - (625px * var(--percent)) / 100);
+        fill: transparent;
+    }
+
+}
 
 
 /*-----------volunteer---------------*/

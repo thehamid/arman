@@ -41,39 +41,59 @@
 
 
                             ?>
-                            <div class="progress">
-                                <?php
-                                $percent=0;
-                                $percent=round(($start*100)/$target);
-
-                                ?>
-                                <div class="progress-bar bg-info" role="progressbar"
-                                     style="width:<?php echo $percent; ?>%"
-                                     aria-valuenow="<?php echo $percent; ?>"
-                                     aria-valuemin="0" aria-valuemax="100">
-
-                                    <div class="progress-value"><?php echo $percent; ?>%</div>
-                                </div>
-                            </div>
 
 
+                            <div class="cf-content-index">
 
-                            <div class="cf-content-footer">
+
+                                        <div class="cf-content-footer">
+
                                 <span>
                                     <div class="tit"><i class="fad fa-bullseye"></i>هدف</div>
                                     <div class="num">  <?php if(isset($target) && !empty($target)) : ?>
                                             <?php echo number_format($target); ?>
-                                        <?php endif; ?> تومان</div>
+                                        <?php endif; ?></div>
+                                    <div class="currency">تومان</div>
                                 </span>
-                                <div class="line"></div>
-                                <span>
+                                            <div class="line"></div>
+                                 <span>
                                     <div class="tit"><i class="fad fa-box-heart"></i>اهدایی</div>
                                     <div class="num">  <?php if(isset($start)) : ?>
                                             <?php echo number_format($start); ?>
-                                        <?php endif; ?> تومان</div>
+                                        <?php endif; ?></div>
+                                     <div class="currency">تومان</div>
                                 </span>
-                                <div class="line"></div>
-                                <span>
+
+                                    </div>
+
+                                   <div class="cf-content-footer">
+
+                                    <span>
+                                        <?php
+                                        $percent = 0;
+                                        $percent = round(($start * 100) / $target);
+
+                                        ?>
+                                        <div class="percent">
+                                            <svg>
+                                              <defs>
+                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                  <stop offset="0%" stop-color="#8523ff" />
+                                                  <stop offset="100%" stop-color="#5eaefd" />
+                                                </linearGradient>
+                                              </defs>
+                                              <circle cx="55" cy="55" r="50" fill="none" stroke="#f0f0f0"></circle>
+                                              <circle cx="55" cy="55" r="50" stroke="url(#gradient)"  fill="none"  style="--percent:<?php echo $percent ?>" ></circle>
+                                            </svg>
+                                            <div class="number">
+                                              <h3><?php echo $percent.'%' ?></h3>
+                                            </div>
+                                        </div>
+                                 </span>
+
+                                       <div class="line"></div>
+
+                                 <span>
                                     <div class="tit"><i class="fad fa-alarm-clock"></i>زمان باقیمانده</div>
                                     <div class="num">  <?php if(isset($datediff) && !empty($datediff)) : ?>
                                             <?php if($datediff>0): ?>
@@ -83,15 +103,29 @@
                                             <?php endif; ?>
                                         <?php endif; ?> </div>
                                 </span>
+
+
+
+                                    </div>
+
+
+
+
+
+
                             </div>
+
+
+
+
 
 
                         </div>
 
                             <?php if($datediff>0 && $start<$target){ ?>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-heart"></i>حمایت می‌کنم</a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-theme">حمایت می‌کنم<i class="fal fa-heart fa-beat"></i></a>
                             <?php }else{ ?>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-theme"><i class="fal fa-flag"></i>پروژه پایان یافت</a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-theme">پروژه پایان یافت<i class="fal fa-flag"></i></a>
                              <?php } ?>
                     </div>
 

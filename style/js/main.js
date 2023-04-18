@@ -147,6 +147,21 @@ gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, form
 });
 //End gf date picker script
 
+// gform.addFilter( 'gform_product_price_6', function( optionsObj, formId, fieldId ) {
+//
+//         const price = document.getElementById('input_6_4');
+//         price.value= '1402';
+//         price.addEventListener('input', function () {
+//             if (price.value.length <= 4) {
+//                 price.value = '1402';
+//             }
+//
+//         });
+//
+//     return optionsObj;
+// });
+//End gf date picker script
+
 
 
 

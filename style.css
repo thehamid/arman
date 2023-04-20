@@ -1361,10 +1361,6 @@ footer .footer-widget{
     padding: 30px 0;
 }
 
-.page .page-content {
-    max-width: 100%;
-    margin: 0 auto;
-}
 
 .page h1 {
     padding: 20px;
@@ -1372,14 +1368,23 @@ footer .footer-widget{
     margin-bottom: 10px;
     margin-top: 100px;
 }
+
+.page h1::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(2,0,36,0) 20%, rgba(97,16,199,1) 50%, rgba(0,212,255,0) 80%);
+    margin:15px 0;
+}
+
 .page .page-content{
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     text-align: justify;
     margin: 0 auto;
-    padding:20px;
-    border-radius: 20px;
-    box-shadow: 3px 2px 16px 2px rgba(125, 125, 125, 0.5);
+    padding:10px;
+
 }
 
 .page .page-content img{

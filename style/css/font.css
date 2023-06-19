@@ -3,3 +3,29 @@
      src:  url('../fonts/ttf/Estedad-VF-FD.ttf') format('truetype'),
            url('../fonts/woff2/Estedad-VF-FD.woff2') format('woff2');
 }
+
+@font-face {
+    font-family:Pinar;
+     src:  url('../fonts/ttf/Pinar-ExtraBold.ttf') format('truetype'),
+           url('../fonts/woff2/Pinar-FD-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: Peyda;
+	font-style: normal;
+	font-weight: 100;
+	src: url('../fonts/eot/PeydaWeb-Regular.eot');
+	src: url('../fonts/eot/PeydaWeb-Regular.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+		 url('../fonts/woff2/PeydaWeb-Regular.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../fonts/woff/PeydaWeb-Regular.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		 url('../fonts/ttf/Peyda-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: Peyda;
+	font-style: normal;
+	font-weight: 900;
+	src: url('../fonts/eot/PeydaWeb-Bold.eot');
+	src: url('../fonts/eot/PeydaWeb-Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+		 url('../fonts/woff2/PeydaWeb-Bold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../fonts/woff/PeydaWeb-Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		 url('../fonts/ttf/Peyda-Bold.ttf') format('truetype');
+}

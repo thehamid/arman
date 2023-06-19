@@ -26,6 +26,7 @@ function theme_styles()
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/fa6.js');
     wp_enqueue_script( 'wordifyfa', get_template_directory_uri() . '/style/js/wordifyfa.js');
+    wp_enqueue_script( 'project-ajax', get_template_directory_uri() . '/style/js/project-ajax.js', array( 'jquery' ), '1.0', true );
     wp_enqueue_script( 'main-js', get_template_directory_uri() . '/style/js/main.js', array( 'jquery' ), '1.0', true );
 
 }
@@ -263,3 +264,4 @@ function calb_comment($comment, $args, $depth)
     <?php
 
 }
+

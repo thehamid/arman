@@ -30,7 +30,7 @@ body {
     width: 100%;
     direction: rtl;
     text-align: right;
-    font-family: Estedad, serif;
+    font-family: Peyda, serif;
     font-weight: 300;
     background: #fff;
     margin: 0;
@@ -70,6 +70,11 @@ a:hover {
     align-items: center;
     padding: 50px;
 }
+.section-title h4{
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
+}
+
 .section-title h4::after {
     content: '';
     display: block;
@@ -327,7 +332,7 @@ header .header-top .top-menu .header-icon{
     padding: 60px 20px 20px;
     transform: translateX(300px);
     transition: all 800ms cubic-bezier(.8, 0, .33, 1);
-    border-radius: 0% 0% 100% 50%;
+    border-radius: 0 0 100% 50%;
 }
 .navigation ul{
 
@@ -367,7 +372,7 @@ header .header-top .top-menu .header-icon{
 
 .nav-open {
     transform: translateX(0px);
-    border-radius: 0% 0% 0% 0%;
+    border-radius: 0 0 0 0;
 
 }
 
@@ -573,6 +578,8 @@ input.search-text::-webkit-search-cancel-button {
 }
 
 .scard p {
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
     font-size: 18px;
     color: #4C5656;
     margin-top: 30px;
@@ -648,6 +655,11 @@ input.search-text::-webkit-search-cancel-button {
 .events .e-item i{
     font-size: 40px;
     color: var(--purple);
+}
+
+.events .e-item h4{
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
 }
 
 .events .img-events img{
@@ -734,7 +746,12 @@ input.search-text::-webkit-search-cancel-button {
 {
     padding:30px 10px;
     text-align: center;
+}
 
+.crowd-funding2 .cf-item .cf-content h3
+{
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
 }
 .crowd-funding2 .cf-item .cf-content .cf-content-footer
 {
@@ -801,9 +818,7 @@ input.search-text::-webkit-search-cancel-button {
     left: 25%;
 }
 
-.cf-content-index{
 
-}
 .percent {
     position: relative;
 }
@@ -818,7 +833,7 @@ input.search-text::-webkit-search-cancel-button {
 .percent svg circle {
     width: 100%;
     height: 100%;
-    stroke-width: 10;
+    stroke-width: 10px;
     stroke-linecap: round;
 }
 
@@ -972,6 +987,11 @@ input.search-text::-webkit-search-cancel-button {
     text-align: center;
 }
 
+.blog-card .post-expert h3{
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
+}
+
 .blog-card .post-expert p{
     text-align: justify;
 }
@@ -1051,6 +1071,7 @@ footer .footer-widget{
 
 
 .footer-copyright{
+    font-size: 18px;
     text-align: center;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgb(57, 57, 210) 35%, rgba(0,212,255,1) 100%);
@@ -1103,6 +1124,8 @@ footer .footer-widget{
 }
 
 .single-hero .single-title h3 {
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
     font-size: 30px;
 }
 
@@ -1136,7 +1159,6 @@ footer .footer-widget{
 
 .single-content {
     position: relative;
-    font-family:"Estedad", serif;
     text-align: justify;
     padding:20px;
     border-radius: 20px;
@@ -1375,6 +1397,8 @@ footer .footer-widget{
 
 
 .page h1 {
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
     padding: 20px;
     text-align: center;
     margin-bottom: 10px;
@@ -1491,6 +1515,12 @@ footer .footer-widget{
 {
     padding:30px 10px;
     text-align: center;
+}
+
+.project-info .cf-content h3
+{
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
 }
 
 .project-info .cf-content .progress{
@@ -1611,9 +1641,10 @@ footer .footer-widget{
 }
 
 .content__product h1 {
+    font-family: Pinar,Peyda,serif;
+    font-weight: 900;
     padding: 20px;
     border-bottom: 1px solid rgba(176, 176, 176, 0.25);
-    font-weight: 200;
 }
 
 .content__product p {
@@ -1778,3 +1809,4 @@ footer .footer-widget{
 .products .product .button{
     margin: 15px;
 }
+/*-------newhome landing page style---------*/

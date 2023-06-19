@@ -46,7 +46,7 @@
                             <div class="cf-content-index">
 
 
-                                        <div class="cf-content-footer">
+                             <div class="cf-content-footer">
 
                                 <span>
                                     <div class="tit"><i class="fad fa-bullseye"></i>هدف</div>
@@ -64,9 +64,9 @@
                                      <div class="currency">تومان</div>
                                 </span>
 
-                                    </div>
+                             </div>
 
-                                   <div class="cf-content-footer">
+                             <div class="cf-content-footer">
 
                                     <span>
                                         <?php
@@ -106,7 +106,7 @@
 
 
 
-                                    </div>
+                             </div>
 
 
 

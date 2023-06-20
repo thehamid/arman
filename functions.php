@@ -26,6 +26,7 @@ function theme_styles()
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/fa6.js');
     wp_enqueue_script( 'wordifyfa', get_template_directory_uri() . '/style/js/wordifyfa.js');
+    wp_enqueue_script( 'project-ajax', get_template_directory_uri() . '/style/js/project-ajax.js', array( 'jquery' ), '1.0', true );
     wp_enqueue_script( 'main-js', get_template_directory_uri() . '/style/js/main.js', array( 'jquery' ), '1.0', true );
 
 }
@@ -264,44 +265,4 @@ function calb_comment($comment, $args, $depth)
 
 }
 
-//Add field Persian Price to gravity forms
 
-if (class_exists('GF_Field')) {
-    class FoodDelivery extends GF_Field {
-        public $type = 'price_optional_fa';
-
-        public function get_form_editor_field_title() {
-            return esc_attr__('مبلغ دلخواه فارسی', 'txtdomain');
-        }
-
-
-
-        public function get_form_editor_button() {
-            return [
-                'group' => 'pricing_fields',
-                'text'  => $this->get_form_editor_field_title(),
-            ];
-        }
-
-        public function get_form_editor_field_settings() {
-            return [
-                'label_setting',
-                'choices_setting',
-                'description_setting',
-                'rules_setting',
-                'error_message_setting',
-                'css_class_setting',
-                'conditional_logic_field_setting'
-            ];
-        }
-
-
-
-
-
-
-
-
-    }
-    GF_Fields::register(new FoodDelivery());
-}

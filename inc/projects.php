@@ -1,6 +1,7 @@
 <?php
 
 include "meta/meta.php";
+include "project_ajax.php";
 
 function register_projects_post_type() {
 

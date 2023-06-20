@@ -160,6 +160,21 @@ gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, form
 // });
 //End gf date picker script
 
-
+// gform.addFilter( 'gform_product_price_1', function( optionsObj, formId, fieldId ) {
+//
+//         const price = document.getElementById('input_1_2');
+//     let dollarUSLocale = Intl.NumberFormat('en-US');
+//     var formatter = new Intl.NumberFormat('fa-IR', {
+//         currency: 'IRR',
+//     });
+//         price.addEventListener('input', function () {
+//             if (price.value.length <= 4) {
+//                 price.value = formatter.format(price)
+//             }
+//
+//         });
+//
+//     return optionsObj;
+// });
 
 

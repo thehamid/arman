@@ -1,13 +1,16 @@
 jQuery(document).ready(function ($) {
+
+
+
+
     $('#projectForm').on('submit',function (event) {
          event.preventDefault();
-
          let project_id=$('#projectId').val();
-         let name=$('#Name').val();
-         let phone=$('#Phone').val();
-         let value=$('#Value').val();
+         let name=$('#name').val();
+         let phone=$('#phone').val();
+         let value=$('#input_number').val();
         $.ajax({
-            url:'/sina/wp-admin/admin-ajax.php',
+            url:'/wp1/wp-admin/admin-ajax.php',
             type:'post',
             dataType:'json',
             data:{
@@ -15,16 +18,33 @@ jQuery(document).ready(function ($) {
                 name:name,
                 phone:phone,
                 value:value,
-                trans_id:1,
+                trans_id:0,
                 project_id:project_id,
-                status:1,
+                status:-2,
             },
-            success:function (response) {
+            success:function (data) {
+                console.log(data);
+                if(data.success) {
+                    $('#projectForm').css('display', 'none');
+                    $('#alert').css('display', 'block');
+                    $('#alert').addClass('alert-success');
+                    $('#alert').append('<p> پرداخت با موفقیت انجام شد </p>');
+                    // if(response.success){
+                    //     setTimeout(function(){
+                    //         window.location.href='/wp1/';
+                    //                          },2000);
+                    // }
+                }
             },
             error:function (error) {
-                if(error){
-
+                console.log(error);
+                if(error) {
+                    $('#projectForm').css('display', 'none');
+                    $('#alert').css('display', 'block');
+                    $('#alert').addClass('alert-danger');
+                    $('#alert').append('<p> پرداخت موفق نبود، خطایی رخ داده است </p>');
                 }
+
             }
         });
     });

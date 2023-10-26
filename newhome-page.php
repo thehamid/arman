@@ -218,6 +218,7 @@ get_header();
 
 
     <?php
+    global $wpdb;
 $donors_count = $wpdb->get_var( $wpdb->prepare(
     "SELECT COUNT(*) AS id FROM {$wpdb->prefix}gf_entry WHERE payment_status='Paid' AND form_id=8"
 
@@ -247,7 +248,7 @@ $donors_count = $wpdb->get_var( $wpdb->prepare(
     // Filling matrix
     function newLine(){
         var line = new Array();
-        for (var i = 0; i < 200; i++){
+        for (var i = 0; i < 400; i++){
             var led = document.createElement("div");
             led.onclick = function(){onOff(this)};
             led.className = "led off";
@@ -264,7 +265,7 @@ $donors_count = $wpdb->get_var( $wpdb->prepare(
         var j = 0;
 
         while (i < arr) {
-            mat[j][199-i++].className = "led";
+            mat[j][399-i++].className = "led";
 
         }
 

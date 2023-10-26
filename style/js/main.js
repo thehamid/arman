@@ -44,41 +44,41 @@ $(window).scroll(function(){
 
 /*Code for WoW animation start page */
 
-var a = 0;
-$(window).scroll(function() {
-
-    var oTop = $('#counter').offset().top - window.innerHeight;
-    if (a == 0 && $(window).scrollTop() > oTop) {
-        $('.number').each(function() {
-            var $this = $(this),
-                countTo = $this.attr('data-count');
-            $({
-                countNum: $this.text()
-            }).animate({
-                    countNum: countTo
-                },
-
-                {
-
-                    duration: 5000,
-                    easing: 'swing',
-                    step: function() {
-                        $this.text(Math.floor(this.countNum));
-                    },
-                    complete: function() {
-                        $this.text(this.countNum);
-                        //alert('finished');
-                    }
-
-                });
-        });
-        a = 1;
-    }
-
-});
+// var a = 0;
+// $(window).scroll(function() {
+//
+//     var oTop = $('#counter').offset().top - window.innerHeight;
+//     if (a == 0 && $(window).scrollTop() > oTop) {
+//         $('.number').each(function() {
+//             var $this = $(this),
+//                 countTo = $this.attr('data-count');
+//             $({
+//                 countNum: $this.text()
+//             }).animate({
+//                     countNum: countTo
+//                 },
+//
+//                 {
+//
+//                     duration: 5000,
+//                     easing: 'swing',
+//                     step: function() {
+//                         $this.text(Math.floor(this.countNum));
+//                     },
+//                     complete: function() {
+//                         $this.text(this.countNum);
+//                         //alert('finished');
+//                     }
+//
+//                 });
+//         });
+//         a = 1;
+//     }
+//
+// });
 
 /*Code for navigation show */
-var menuBtn = document.querySelector('#hamberger');
+var menuBtn = document.querySelector('#slide_menu');
 var closeBtn = document.querySelector('#close');
 var nav = document.querySelector('.navigation');
 var lineOne = document.querySelector('nav .menu-btn .line--1');
@@ -132,17 +132,17 @@ $('#input_number').keyup(function () {
 
 
 //Start gf date picker script
-gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
-    if ( formId == 1 && fieldId == 21 ) {
-        optionsObj.minDate = 2;
-        optionsObj.maxDate = 20;
-    }
-    return optionsObj;
-} );
-gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
-    jQuery( ".datepicker" ).attr('readonly','readonly');
-    return optionsObj;
-});
+// gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
+//     if ( formId == 1 && fieldId == 21 ) {
+//         optionsObj.minDate = 2;
+//         optionsObj.maxDate = 20;
+//     }
+//     return optionsObj;
+// } );
+// gform.addFilter( 'gform_datepicker_options_pre_init', function( optionsObj, formId, fieldId ) {
+//     jQuery( ".datepicker" ).attr('readonly','readonly');
+//     return optionsObj;
+// });
 //End gf date picker script
 
 // gform.addFilter( 'gform_product_price_6', function( optionsObj, formId, fieldId ) {

@@ -15,7 +15,7 @@ function theme_styles()
     wp_enqueue_style( 'font', get_template_directory_uri() . '/style/css/font.css' );
     wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/style/css/owl.carousel.min.css');
     wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/style/css/owl.theme.default.css');
-    wp_enqueue_style( 'animate', get_template_directory_uri() . '/style/css/animate.min.css');
+   // wp_enqueue_style( 'animate', get_template_directory_uri() . '/style/css/animate.min.css');
     wp_enqueue_style( 'main', get_template_directory_uri() . '/style.css' );
 
     // Load all of the script that need to appear on all pages
@@ -23,7 +23,7 @@ function theme_styles()
     wp_enqueue_script( 'popper', get_template_directory_uri() . '/style/js/popper.min.js');
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/style/js/bootstrap.min.js');
     wp_enqueue_script( 'owl', get_template_directory_uri() . '/style/js/owl.carousel.min.js');
-    wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
+    //wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/fa6.js');
     wp_enqueue_script( 'wordifyfa', get_template_directory_uri() . '/style/js/wordifyfa.js');
     wp_enqueue_script( 'project-ajax', get_template_directory_uri() . '/style/js/project-ajax.js', array( 'jquery' ), '1.0', true );

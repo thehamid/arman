@@ -301,15 +301,7 @@ header .header-top .top-menu .header-icon{
     top: 60px;
 }
 
-#hamberger {
-    float: right;
-    cursor: pointer;
-    display: none;
-}
-#hamberger i {
-    font-size: 26px;
-    padding: 20px;
-}
+
 
 #close {
     cursor: pointer;
@@ -1809,4 +1801,59 @@ footer .footer-widget{
 .products .product .button{
     margin: 15px;
 }
-/*-------newhome landing page style---------*/
+/*-------mobile-bottom-nav---------*/
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    will-change: transform;
+    transform: translateZ(0);
+    display: flex;
+    height: 60px;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color: #fff;
+}
+.mobile-bottom-nav__item {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mobile-bottom-nav__item--active {
+    color: red;
+}
+.mobile-bottom-nav__item-content {
+    display: flex;
+    flex-direction: column;
+}
+.mobile-bottom-nav__item-content svg{
+   font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#slide_menu{
+    cursor: pointer;
+}
+#slide_menu:hover{
+    color:var(--blue);
+}
+.mobile_menu{
+    display:none;
+}
+
+
+
+@media screen and (max-width:992px) {
+
+    .mobile_menu {
+        display: block;
+    }
+
+    .login_cart{
+        display: none;
+    }
+}

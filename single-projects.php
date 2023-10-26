@@ -122,20 +122,25 @@ global $donors_count;
 
                 <?php } elseif($datediff>0 && $start<$target){ ?>
 
-                    <div class="pay-form">
+                    <div class="pay-form"> <!--    Form Pardakht !-->
+
+                        <div id="alert" class="alert text-center" role="alert" style="display: none">
+                                <!--    space for show alert!-->
+                        </div>
+
                         <form method="post" class="row g-3" id="projectForm">
                             <input type="hidden" class="form-control" id="projectId" name="project_id" value="<?php the_ID(); ?>">
                             <input type="hidden" class="form-control" id="projectLink" name="project_link" value="<?php the_permalink(); ?>">
                             <div class="col-12">
                                 <label class="form-label">نام شما</label>
-                                <input type="text" class="form-control" id="Name" name="name"   required=""
+                                <input type="text" class="form-control" id="name" name="name"   required=""
                                        oninvalid="this.setCustomValidity('وارد کردن نام الزامی است')"
                                        oninput="setCustomValidity('')"/>
 
                             </div>
                             <div class="col-12">
                                 <label  class="form-label">تلفن تماس</label>
-                                <input type="text" class="form-control" id="Phone" name="phone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                                <input type="text" class="form-control" id="phone" name="phone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
                             </div>
                             <div class="col-12 d-flex flex-column">
                                 <label  class="form-label">انتخاب مبلغ اهدایی</label>
@@ -155,7 +160,7 @@ global $donors_count;
                             </div>
                             <div class="col-12">
                                 <label  class="form-label">مبلغ اهدایی به تومان </label>
-                                <input id="input_number" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." id="Value" name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
+                                <input id="input_number" type="text" class="form-control" minlength="4" placeholder="لطفا مبلغ را به تومان وارد کنید..." id="Value" name="value" required="" oninvalid="this.setCustomValidity('مبلغ نمیتواند کمتر از هزار تومان باشد')"  oninput="setCustomValidity('')">
                                 <span id="farsi">.</span>
                             </div>
 

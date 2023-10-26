@@ -14,9 +14,7 @@
     <div class="container">
           <div class="header-top">
             <div class="right">
-                <div id="hamberger">
-                    <i class="fas fa-bars"></i>
-                </div>
+
                 <div class="logo" title="<?php bloginfo( 'name' ); ?>">
 
                     <div class="site-branding">
@@ -26,7 +24,7 @@
                         <?php
                         $sticky_logo_url = get_theme_mod( 'mobile_logo' );
                         if ($sticky_logo_url )
-                            echo '<a href="'. esc_url( home_url() ) .'"><img src="'.$sticky_logo_url.'" alt = "logo alt test" class="mobile_logo"></a>';
+                            echo '<a href="'. esc_url( home_url() ) .'"><img src="'.$sticky_logo_url.'" alt = "logo" class="mobile_logo"></a>';
                         ?>
                     </div>
 
@@ -52,9 +50,12 @@
 
 
             <div class="top-menu">
-                <a  class="header-icon"><i class="fal fa-user"> </i> <?php echo do_shortcode('[dm-modal]');?></a>
+                <div class="login_cart">
+                    <a  class="header-icon"><i class="fal fa-user"> </i> <?php echo do_shortcode('[dm-modal]');?></a>
+                    <a href="<?php echo home_url(); ?>/cart" class="header-icon"><i class="fal fa-shopping-cart"></i> <span id="count-cart-items"></span></a>
+                </div>
 
-                <a href="<?php echo home_url(); ?>/cart" class="header-icon"><i class="fal fa-shopping-cart"></i> <span id="count-cart-items"></span></a>
+                <a href="<?php echo home_url(); ?>/en" class="header-icon">EN</a>
                 <a href="<?php echo home_url(); ?>/donation" class="btn btn-theme"><i class="fal fa-heart"></i>کمک آرمانی</a>
             </div>
         </div>

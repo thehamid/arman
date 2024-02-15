@@ -1,0 +1,28 @@
+/*
+RTL Style For Arman Template
+*/
+
+/*---------------------
+        All-Page
+-=-----------------------*/
+
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .volunteer .vol-item .img-vol img{
+        left: 120px;
+    }
+
+}
+
+.main-menu {
+    float: right;
+}
+.main-menu > ul > li {
+    float: right;
+
+}

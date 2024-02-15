@@ -1,11 +1,26 @@
 <section class="blog">
     <div class="container">
-
+        <?php
+        global $wp;
+        $url=home_url( $wp->request );
+        $key='en';
+        if (strpos($url, $key) == false) {?>
         <div class="section-title">
             <h4>مطالب و اخبار آرمان</h4>
             <a href="<?php echo home_url(); ?>\blog" class="btn btn-outline-secondary"> همه مطالب</a>
         </div>
+            <?php
+        }
+        else {
+        ?>
+        <div class="section-title">
+            <h4>Articles & News</h4>
+            <a href="<?php echo home_url(); ?>\blog" class="btn btn-outline-secondary"> All Articles </a>
+        </div>
 
+        <?php
+        }
+        ?>
         <div class="row">
 
             <?php query_posts(array('orderby'=>'ASC', 'post_type' => 'post','posts_per_page' => 3,)); ?>

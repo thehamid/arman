@@ -37,7 +37,7 @@ function wc_refresh_cart_fragments( $fragments ){
         $fragments['#count-cart-items'] ='';
     }
     // Mobile version
-    $count_mobile = '<span id="count-cart-itemob">' .  $cart_count . '</span>';
+    $count_mobile = '<span id="count-cart-items-mobile">' .  $cart_count . '</span>';
     $fragments['#count-cart-itemob'] = $count_mobile;
 
     return $fragments;

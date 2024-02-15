@@ -3,6 +3,16 @@
 include "inc/projects.php";
 include "woocommerce/woo-func.php";
 
+
+function aspnetcdn_jquery() {
+    if(!is_admin()) {
+        wp_deregister_script( 'jquery' );
+        wp_register_script( 'jquery', 'https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js', '1.9.0');
+        wp_enqueue_script('jquery');
+    }
+}
+add_action( 'wp_enqueue_scripts', 'aspnetcdn_jquery' );
+
 // Load the theme stylesheets
 function theme_styles()
 {
@@ -15,15 +25,15 @@ function theme_styles()
     wp_enqueue_style( 'font', get_template_directory_uri() . '/style/css/font.css' );
     wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/style/css/owl.carousel.min.css');
     wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/style/css/owl.theme.default.css');
-   // wp_enqueue_style( 'animate', get_template_directory_uri() . '/style/css/animate.min.css');
+    wp_enqueue_style( 'animate', get_template_directory_uri() . '/style/css/animate.min.css');
     wp_enqueue_style( 'main', get_template_directory_uri() . '/style.css' );
 
     // Load all of the script that need to appear on all pages
-    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/style/js/jquery-3.3.1.js');
+    wp_enqueue_script( 'jquery-load', get_template_directory_uri() . '/style/js/jquery-3.7.1.min.js');
     wp_enqueue_script( 'popper', get_template_directory_uri() . '/style/js/popper.min.js');
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/style/js/bootstrap.min.js');
     wp_enqueue_script( 'owl', get_template_directory_uri() . '/style/js/owl.carousel.min.js');
-    //wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
+    wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/wow.min.js');
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/style/js/fa6.js');
     wp_enqueue_script( 'wordifyfa', get_template_directory_uri() . '/style/js/wordifyfa.js');
     wp_enqueue_script( 'project-ajax', get_template_directory_uri() . '/style/js/project-ajax.js', array( 'jquery' ), '1.0', true );
@@ -54,12 +64,14 @@ function mytheme_customize_register( $wp_customize ) {
         );
     }
 
-    $wp_customize->add_setting('mobile_logo');
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mobile_logo', array(
-        'label' => 'Mobile Logo',
+
+
+    $wp_customize->add_setting('logo_English');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_English', array(
+        'label' => 'English Logo',
         'section' => 'title_tagline',
-        'settings' => 'mobile_logo',
-        'priority' => 8
+        'settings' => 'logo_English',
+        'priority' => 9
     )));
 }
 add_action( 'customize_register', 'mytheme_customize_register' );
@@ -93,7 +105,7 @@ function register_my_menus() {
     register_nav_menus(
         array(
             'main-menu' => __( 'منوی اصلی' ),
-
+            'lang-menu' => __( 'منوی زبان' ),
         )
     );
 
@@ -213,6 +225,17 @@ function my_widget_footer(){
             'after_title'   => ''
         )
     );
+
+    register_sidebar( array(
+            'name'			=> 'منوی کناری موبایل',
+            'id'			=> 'header-mobile-menu',
+            'before_widget' => '<div class="inner">',
+            'after_widget'  => '</div>',
+            'before_title'  => '',
+            'after_title'   => ''
+        )
+    );
+
 
 }
 add_action('widgets_init', 'my_widget_footer');

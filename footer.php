@@ -99,7 +99,7 @@
                 <div class="mobile-bottom-nav__item">
                     <a href="<?php echo home_url(); ?>/cart" >
                         <div class="mobile-bottom-nav__item-content">
-                            <i class="fal fa-cart-shopping"><span id="count-cart-items-mobile">2</span></i>
+                            <i class="mini-cart fal fa-cart-shopping"> <span id="mini-cart-count"></span></i>
                             سبد خرید
                         </div>
                     </a>

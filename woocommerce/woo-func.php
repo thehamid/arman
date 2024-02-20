@@ -30,16 +30,33 @@ function wc_refresh_cart_fragments( $fragments ){
     $cart_count = WC()->cart->get_cart_contents_count();
 
     // Normal version
-    $count_normal = '<span id="count-cart-items">' .  $cart_count . '</span>';
+    $count_normal = '<span id="count-cart-items" >' .  $cart_count . '</span>';
+    $count_empty = '<span id="count-cart-items" style="display: none" >' .  $cart_count . '</span>';
     if($cart_count>0) {
         $fragments['#count-cart-items'] = $count_normal;
     }elseif ($cart_count==0){
-        $fragments['#count-cart-items'] ='';
+        $fragments['#count-cart-items'] =$count_empty;
     }
-    // Mobile version
-    $count_mobile = '<span id="count-cart-items-mobile">' .  $cart_count . '</span>';
-    $fragments['#count-cart-itemob'] = $count_mobile;
 
+    return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'wc_refresh_mini_cart_count');
+function wc_refresh_mini_cart_count($fragments){
+    ob_start();
+    $items_count = WC()->cart->get_cart_contents_count();
+
+     $count_normal = '<span id="count-cart-items" >' .  $items_count . '</span>';
+    $count_empty = '<span id="count-cart-items" style="display: none" >' .  $items_count . '</span>';
+//    if($items_count>0) {
+//        $fragments['#mini-cart-count'] = $count_normal;
+//    }elseif ($items_count==0){
+//        $fragments['#mini-cart-count'] =$count_empty;
+//    }
+
+    $items_count ? $count_normal : $count_empty;
+
+    $fragments['#mini-cart-count'] = ob_get_clean();
     return $fragments;
 }
 

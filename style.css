@@ -159,16 +159,7 @@ header .header-top .top-menu .header-icon ul{
     right: -5px;
 }
 
-#count-cart-items-mobile{
-    background-color: #cc68db;
-    padding: 1px 8px;
-    border-radius: 1000px;
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-}
+
 
 .header-bottom nav ul li{
     padding: 0 10px;
@@ -1854,8 +1845,20 @@ footer .footer-widget{
 .mobile_menu{
     display:none;
 }
-
-
+.mini-cart{
+    position: relative;
+}
+#mini-cart-count{
+    background-color: #cc68db;
+    padding: 4px 6px;
+    border-radius: 1000px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
 
 @media screen and (max-width:992px) {
 
